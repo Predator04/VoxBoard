@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.kotlin
+package org.voxboard.lib.kotlin
 
 /**
  * Utility class for matching MIME types against predefined filters.

@@ -22,11 +22,11 @@ import com.voxboard.app.enumDisplayEntriesOf
 import com.voxboard.ime.clipboard.CLIPBOARD_HISTORY_NUM_GRID_COLUMNS_AUTO
 import com.voxboard.ime.clipboard.ClipboardSyncBehavior
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.DialogSliderPreference
-import com.voxboard.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import com.voxboard.jetpref.datastore.ui.ListPreference
-import com.voxboard.jetpref.datastore.ui.PreferenceGroup
-import com.voxboard.jetpref.datastore.ui.SwitchPreference
+import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
+import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
+import dev.patrickgold.jetpref.datastore.ui.ListPreference
+import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
+import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 import org.voxboard.lib.android.AndroidVersion
 import org.voxboard.lib.compose.pluralsRes
 import org.voxboard.lib.compose.stringRes

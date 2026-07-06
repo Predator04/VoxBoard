@@ -39,12 +39,12 @@ import com.voxboard.ime.theme.ThemeMode
 import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.ext.ExtensionComponentName
 import com.voxboard.themeManager
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.datastore.ui.ColorPickerPreference
-import com.voxboard.jetpref.datastore.ui.ListPreference
-import com.voxboard.jetpref.datastore.ui.LocalTimePickerPreference
-import com.voxboard.jetpref.datastore.ui.Preference
-import com.voxboard.jetpref.datastore.ui.isMaterialYou
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.ui.ColorPickerPreference
+import dev.patrickgold.jetpref.datastore.ui.ListPreference
+import dev.patrickgold.jetpref.datastore.ui.LocalTimePickerPreference
+import dev.patrickgold.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.datastore.ui.isMaterialYou
 import org.voxboard.lib.color.ColorMappings
 import org.voxboard.lib.compose.stringRes
 

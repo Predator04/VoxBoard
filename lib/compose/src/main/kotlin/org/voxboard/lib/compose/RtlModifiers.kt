@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.compose
+package org.voxboard.lib.compose
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.compose
+package org.voxboard.lib.compose
 
 import android.content.Context
 import android.view.View
@@ -31,8 +31,8 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
-import org.florisboard.lib.kotlin.CurlyArg
-import org.florisboard.lib.kotlin.curlyFormat
+import org.voxboard.lib.kotlin.CurlyArg
+import org.voxboard.lib.kotlin.curlyFormat
 
 private val LocalResourcesContext = staticCompositionLocalOf<Context> {
     error("resources context not initialized!!")

@@ -91,7 +91,7 @@ import com.voxboard.ime.keyboard.FlorisImeSizing
 import com.voxboard.ime.text.keyboard.TextKeyData
 import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.keyboardManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import kotlinx.coroutines.launch
 import org.voxboard.lib.android.AndroidKeyguardManager
 import org.voxboard.lib.android.showShortToast

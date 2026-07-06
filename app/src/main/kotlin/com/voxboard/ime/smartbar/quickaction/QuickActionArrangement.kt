@@ -18,7 +18,7 @@ package com.voxboard.ime.smartbar.quickaction
 
 import com.voxboard.ime.text.keyboard.TextKeyData
 import com.voxboard.lib.io.DefaultJsonConfig
-import com.voxboard.jetpref.datastore.model.PreferenceSerializer
+import dev.patrickgold.jetpref.datastore.model.PreferenceSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule

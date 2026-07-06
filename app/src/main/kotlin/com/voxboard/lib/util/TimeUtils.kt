@@ -18,7 +18,7 @@ package com.voxboard.lib.util
 
 import android.icu.text.SimpleDateFormat
 import com.voxboard.lib.FlorisLocale
-import com.voxboard.jetpref.datastore.model.LocalTime
+import dev.patrickgold.jetpref.datastore.model.LocalTime
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 

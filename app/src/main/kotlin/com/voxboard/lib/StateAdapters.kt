@@ -29,7 +29,7 @@ import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.voxboard.jetpref.datastore.model.PreferenceData
+import dev.patrickgold.jetpref.datastore.model.PreferenceData
 import kotlinx.coroutines.flow.map
 
 @SuppressLint("StateFlowValueCalledInComposition")

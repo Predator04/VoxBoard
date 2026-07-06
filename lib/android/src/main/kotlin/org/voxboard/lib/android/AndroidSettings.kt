@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
 import android.content.Context
 import android.net.Uri
 import android.provider.Settings
-import org.florisboard.lib.kotlin.tryOrNull
+import org.voxboard.lib.kotlin.tryOrNull
 import java.lang.reflect.Modifier
 import kotlin.reflect.KClass
 

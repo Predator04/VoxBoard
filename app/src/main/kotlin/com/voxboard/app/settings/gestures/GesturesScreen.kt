@@ -24,10 +24,10 @@ import com.voxboard.R
 import com.voxboard.app.enumDisplayEntriesOf
 import com.voxboard.ime.text.gestures.SwipeAction
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.DialogSliderPreference
-import com.voxboard.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import com.voxboard.jetpref.datastore.ui.ListPreference
-import com.voxboard.jetpref.datastore.ui.PreferenceGroup
+import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
+import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
+import dev.patrickgold.jetpref.datastore.ui.ListPreference
+import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
 import org.voxboard.lib.compose.FlorisInfoCard
 import org.voxboard.lib.compose.stringRes
 

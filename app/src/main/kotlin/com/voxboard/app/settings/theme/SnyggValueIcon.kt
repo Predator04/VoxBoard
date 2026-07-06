@@ -58,8 +58,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.materialkolor.dynamicColorScheme
 import com.voxboard.app.FlorisPreferenceStore
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.material.ui.checkeredBackground
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.material.ui.checkeredBackground
 import org.voxboard.lib.color.getColor
 import org.voxboard.lib.color.systemAccentOrDefault
 import org.voxboard.lib.snygg.value.SnyggContentScaleValue

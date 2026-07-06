@@ -18,7 +18,7 @@ package com.voxboard.ime.media.emoji
 
 import com.voxboard.app.FlorisPreferenceModel
 import com.voxboard.lib.devtools.flogError
-import com.voxboard.jetpref.datastore.model.PreferenceSerializer
+import dev.patrickgold.jetpref.datastore.model.PreferenceSerializer
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.Serializable

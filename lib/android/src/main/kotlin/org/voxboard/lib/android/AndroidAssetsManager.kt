@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
-import org.florisboard.lib.kotlin.io.FsDir
-import org.florisboard.lib.kotlin.io.FsFile
-import org.florisboard.lib.kotlin.io.subDir
-import org.florisboard.lib.kotlin.io.subFile
+import org.voxboard.lib.kotlin.io.FsDir
+import org.voxboard.lib.kotlin.io.FsFile
+import org.voxboard.lib.kotlin.io.subDir
+import org.voxboard.lib.kotlin.io.subFile
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.Reader

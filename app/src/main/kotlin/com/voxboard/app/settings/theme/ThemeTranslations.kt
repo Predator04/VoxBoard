@@ -20,7 +20,7 @@ import android.content.Context
 import com.voxboard.R
 import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.lib.UnicodeCtrlChar
-import com.voxboard.jetpref.material.ui.ColorRepresentation
+import dev.patrickgold.jetpref.material.ui.ColorRepresentation
 import org.voxboard.lib.kotlin.simpleNameOrEnclosing
 import org.voxboard.lib.snygg.Snygg
 import org.voxboard.lib.snygg.SnyggElementRule

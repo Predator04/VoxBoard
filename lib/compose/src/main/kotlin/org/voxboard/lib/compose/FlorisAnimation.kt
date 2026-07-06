@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.compose
+package org.voxboard.lib.compose
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition

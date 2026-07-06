@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
 import android.net.Uri
 import androidx.core.net.toUri

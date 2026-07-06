@@ -3,11 +3,11 @@ package org.florisboard.lib.snygg
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import org.florisboard.lib.snygg.value.SnyggDefinedVarValue
-import org.florisboard.lib.snygg.value.SnyggDpSizeValue
-import org.florisboard.lib.snygg.value.SnyggRectangleShapeValue
-import org.florisboard.lib.snygg.value.SnyggShapeValue
-import org.florisboard.lib.snygg.value.SnyggStaticColorValue
+import org.voxboard.lib.snygg.value.SnyggDefinedVarValue
+import org.voxboard.lib.snygg.value.SnyggDpSizeValue
+import org.voxboard.lib.snygg.value.SnyggRectangleShapeValue
+import org.voxboard.lib.snygg.value.SnyggShapeValue
+import org.voxboard.lib.snygg.value.SnyggStaticColorValue
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs

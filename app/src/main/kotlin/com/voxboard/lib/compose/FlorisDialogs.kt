@@ -20,7 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.voxboard.R
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
 import org.voxboard.lib.compose.stringRes
 
 @Composable

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
 private const val VarKey = "varKey"
 

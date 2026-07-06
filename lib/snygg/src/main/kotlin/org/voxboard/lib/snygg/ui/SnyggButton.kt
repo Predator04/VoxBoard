@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.ui
+package org.voxboard.lib.snygg.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -34,8 +34,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import org.florisboard.lib.snygg.SnyggQueryAttributes
-import org.florisboard.lib.snygg.SnyggSelector
+import org.voxboard.lib.snygg.SnyggQueryAttributes
+import org.voxboard.lib.snygg.SnyggSelector
 
 /**
  * Simple interactive Box with integrated clickable state management.

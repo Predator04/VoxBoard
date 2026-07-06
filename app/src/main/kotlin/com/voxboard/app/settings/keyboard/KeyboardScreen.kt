@@ -29,12 +29,12 @@ import com.voxboard.ime.smartbar.IncognitoDisplayMode
 import com.voxboard.ime.text.key.KeyHintMode
 import com.voxboard.ime.text.key.UtilityKeyAction
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.DialogSliderPreference
-import com.voxboard.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import com.voxboard.jetpref.datastore.ui.ListPreference
-import com.voxboard.jetpref.datastore.ui.Preference
-import com.voxboard.jetpref.datastore.ui.PreferenceGroup
-import com.voxboard.jetpref.datastore.ui.SwitchPreference
+import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
+import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
+import dev.patrickgold.jetpref.datastore.ui.ListPreference
+import dev.patrickgold.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
+import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 import org.voxboard.lib.compose.stringRes
 
 @OptIn(ExperimentalJetPrefDatastoreUi::class)

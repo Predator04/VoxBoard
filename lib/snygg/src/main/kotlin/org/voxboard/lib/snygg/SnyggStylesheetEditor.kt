@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg
+package org.voxboard.lib.snygg
 
 class SnyggStylesheetEditor(
     private val schema: String,

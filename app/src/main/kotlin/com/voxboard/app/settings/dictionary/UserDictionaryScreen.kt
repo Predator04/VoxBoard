@@ -59,9 +59,9 @@ import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.compose.Validation
 import com.voxboard.lib.rememberValidationResult
 import com.voxboard.lib.util.launchActivity
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
-import com.voxboard.jetpref.material.ui.JetPrefListItem
-import com.voxboard.jetpref.material.ui.JetPrefTextField
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.material.ui.JetPrefTextField
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.voxboard.lib.android.showLongToast

@@ -16,12 +16,12 @@
 
 @file:Suppress("NOTHING_TO_INLINE")
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
 import android.content.Context
 import androidx.annotation.StringRes
-import org.florisboard.lib.kotlin.CurlyArg
-import org.florisboard.lib.kotlin.curlyFormat
+import org.voxboard.lib.kotlin.CurlyArg
+import org.voxboard.lib.kotlin.curlyFormat
 import kotlin.reflect.KClass
 
 /**

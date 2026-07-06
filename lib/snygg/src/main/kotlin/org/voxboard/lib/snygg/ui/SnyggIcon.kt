@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.ui
+package org.voxboard.lib.snygg.ui
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -27,9 +27,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.florisboard.lib.snygg.SnyggQueryAttributes
-import org.florisboard.lib.snygg.SnyggSelector
-import org.florisboard.lib.snygg.SnyggStylesheet
+import org.voxboard.lib.snygg.SnyggQueryAttributes
+import org.voxboard.lib.snygg.SnyggSelector
+import org.voxboard.lib.snygg.SnyggStylesheet
 
 /**
  * Simple Icon composable, which displays a given [imageVector] annotated by the [contentDescription].

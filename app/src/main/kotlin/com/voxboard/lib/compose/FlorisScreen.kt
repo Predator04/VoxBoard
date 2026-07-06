@@ -40,8 +40,8 @@ import androidx.compose.ui.platform.LocalContext
 import com.voxboard.app.FlorisPreferenceModel
 import com.voxboard.app.FlorisPreferenceStore
 import com.voxboard.app.LocalNavController
-import com.voxboard.jetpref.datastore.ui.PreferenceLayout
-import com.voxboard.jetpref.datastore.ui.PreferenceUiContent
+import dev.patrickgold.jetpref.datastore.ui.PreferenceLayout
+import dev.patrickgold.jetpref.datastore.ui.PreferenceUiContent
 import org.voxboard.lib.android.AndroidVersion
 import org.voxboard.lib.compose.FlorisAppBar
 import org.voxboard.lib.compose.FlorisIconButton

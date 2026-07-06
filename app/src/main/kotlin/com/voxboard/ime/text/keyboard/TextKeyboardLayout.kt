@@ -84,7 +84,7 @@ import com.voxboard.lib.devtools.LogTopic
 import com.voxboard.lib.devtools.flogDebug
 import com.voxboard.lib.observeAsTransformingState
 import com.voxboard.lib.toIntOffset
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.onFailure
 import kotlinx.coroutines.isActive

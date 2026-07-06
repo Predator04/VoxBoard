@@ -49,8 +49,8 @@ import com.voxboard.app.LocalNavController
 import com.voxboard.ime.core.DisplayLanguageNamesIn
 import com.voxboard.lib.FlorisLocale
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 import org.voxboard.lib.compose.florisScrollbar
 import org.voxboard.lib.compose.stringRes
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
 import android.content.Context
 import android.widget.Toast
@@ -22,7 +22,7 @@ import androidx.annotation.StringRes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import org.florisboard.lib.kotlin.CurlyArg
+import org.voxboard.lib.kotlin.CurlyArg
 
 /**
  * Shows a short toast with specified text.

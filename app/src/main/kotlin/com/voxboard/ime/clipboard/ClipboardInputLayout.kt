@@ -105,7 +105,7 @@ import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.keyboardManager
 import com.voxboard.lib.observeAsTransformingState
 import com.voxboard.lib.util.NetworkUtils
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import java.time.Instant
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

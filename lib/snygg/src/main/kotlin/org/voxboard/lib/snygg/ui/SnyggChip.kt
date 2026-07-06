@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.ui
+package org.voxboard.lib.snygg.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.material3.ripple
@@ -24,9 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import org.florisboard.lib.snygg.SnyggQueryAttributes
-import org.florisboard.lib.snygg.SnyggSelector
-import org.florisboard.lib.snygg.SnyggStylesheet
+import org.voxboard.lib.snygg.SnyggQueryAttributes
+import org.voxboard.lib.snygg.SnyggSelector
+import org.voxboard.lib.snygg.SnyggStylesheet
 
 /**
  * Simple layout composable that places its children in a horizontal sequence.

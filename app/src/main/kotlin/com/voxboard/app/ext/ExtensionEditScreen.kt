@@ -80,9 +80,9 @@ import com.voxboard.lib.io.FlorisRef
 import com.voxboard.lib.io.ZipUtils
 import com.voxboard.lib.rememberValidationResult
 import com.voxboard.themeManager
-import com.voxboard.jetpref.datastore.ui.Preference
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
-import com.voxboard.jetpref.material.ui.JetPrefTextField
+import dev.patrickgold.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefTextField
 import java.util.*
 import org.voxboard.lib.compose.FlorisButtonBar
 import org.voxboard.lib.compose.FlorisIconButton

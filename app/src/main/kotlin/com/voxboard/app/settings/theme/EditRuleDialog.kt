@@ -87,10 +87,10 @@ import com.voxboard.keyboardManager
 import com.voxboard.lib.NATIVE_NULLPTR
 import com.voxboard.lib.compose.FlorisHyperlinkText
 import com.voxboard.lib.util.InputMethodUtils
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
-import com.voxboard.jetpref.material.ui.JetPrefDropdown
-import com.voxboard.jetpref.material.ui.JetPrefTextField
-import com.voxboard.jetpref.material.ui.JetPrefTextFieldDefaults
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefDropdown
+import dev.patrickgold.jetpref.material.ui.JetPrefTextField
+import dev.patrickgold.jetpref.material.ui.JetPrefTextFieldDefaults
 import org.voxboard.lib.android.showShortToast
 import org.voxboard.lib.android.showShortToastSync
 import org.voxboard.lib.android.stringRes

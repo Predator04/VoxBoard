@@ -55,9 +55,9 @@ import com.voxboard.lib.devtools.flogError
 import com.voxboard.lib.ext.ExtensionManager
 import com.voxboard.lib.io.FileRegistry
 import com.voxboard.lib.io.ZipUtils
-import com.voxboard.jetpref.datastore.runtime.AndroidAppDataStorage
-import com.voxboard.jetpref.datastore.runtime.FileBasedStorage
-import com.voxboard.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.datastore.runtime.AndroidAppDataStorage
+import dev.patrickgold.jetpref.datastore.runtime.FileBasedStorage
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

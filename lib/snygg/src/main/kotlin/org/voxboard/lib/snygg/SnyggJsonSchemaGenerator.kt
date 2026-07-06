@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg
+package org.voxboard.lib.snygg
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.encodeToJsonElement
-import org.florisboard.lib.kotlin.io.writeJson
-import org.florisboard.lib.kotlin.simpleNameOrEnclosing
-import org.florisboard.lib.snygg.value.SnyggKeywordValueSpec
-import org.florisboard.lib.snygg.value.SnyggValueEncoder
-import org.florisboard.lib.snygg.value.SnyggValueSpec
+import org.voxboard.lib.kotlin.io.writeJson
+import org.voxboard.lib.kotlin.simpleNameOrEnclosing
+import org.voxboard.lib.snygg.value.SnyggKeywordValueSpec
+import org.voxboard.lib.snygg.value.SnyggValueEncoder
+import org.voxboard.lib.snygg.value.SnyggValueSpec
 import java.io.File
 
 object SnyggJsonSchemaGenerator {

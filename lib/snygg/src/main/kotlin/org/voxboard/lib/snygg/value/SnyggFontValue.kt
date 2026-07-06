@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import org.florisboard.lib.snygg.value.SnyggFontValue.Companion.FontNameRegex
+import org.voxboard.lib.snygg.value.SnyggFontValue.Companion.FontNameRegex
 
 sealed interface SnyggFontValue : SnyggValue {
     companion object {

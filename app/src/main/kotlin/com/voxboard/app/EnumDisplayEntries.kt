@@ -43,9 +43,9 @@ import com.voxboard.ime.text.gestures.SwipeAction
 import com.voxboard.ime.text.key.KeyHintMode
 import com.voxboard.ime.text.key.UtilityKeyAction
 import com.voxboard.ime.theme.ThemeMode
-import com.voxboard.jetpref.datastore.ui.ListPreferenceEntry
-import com.voxboard.jetpref.datastore.ui.listPrefEntries
-import com.voxboard.jetpref.material.ui.ColorRepresentation
+import dev.patrickgold.jetpref.datastore.ui.ListPreferenceEntry
+import dev.patrickgold.jetpref.datastore.ui.listPrefEntries
+import dev.patrickgold.jetpref.material.ui.ColorRepresentation
 import org.voxboard.lib.compose.stringRes
 import org.voxboard.lib.kotlin.curlyFormat
 import kotlin.reflect.KClass

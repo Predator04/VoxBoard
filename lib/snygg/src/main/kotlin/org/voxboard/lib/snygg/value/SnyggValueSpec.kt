@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
 import androidx.annotation.CallSuper
-import org.florisboard.lib.kotlin.curlyFormat
+import org.voxboard.lib.kotlin.curlyFormat
 
 private val AngledGroupNameRegex = """<[a-zA-Z0-9]+>""".toRegex()
 private val WhitespaceRegex = """\s*""".toRegex()

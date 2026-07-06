@@ -51,8 +51,8 @@ import com.voxboard.lib.compose.FlorisScreenScope
 import com.voxboard.lib.util.InputMethodUtils
 import com.voxboard.lib.util.launchActivity
 import com.voxboard.lib.util.launchUrl
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.datastore.ui.PreferenceUiScope
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.ui.PreferenceUiScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

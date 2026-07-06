@@ -28,8 +28,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.voxboard.R
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.Preference
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
 import org.voxboard.lib.android.AndroidSettings
 import org.voxboard.lib.compose.stringRes
 

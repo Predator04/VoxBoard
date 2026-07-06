@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.ui
+package org.voxboard.lib.snygg.ui
 
 import android.graphics.Canvas
 import android.graphics.PixelFormat
@@ -55,9 +55,9 @@ import coil3.request.allowHardware
 import coil3.toBitmap
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
-import org.florisboard.lib.android.AndroidVersion
-import org.florisboard.lib.snygg.SnyggQueryAttributes
-import org.florisboard.lib.snygg.SnyggSelector
+import org.voxboard.lib.android.AndroidVersion
+import org.voxboard.lib.snygg.SnyggQueryAttributes
+import org.voxboard.lib.snygg.SnyggSelector
 
 /**
  * Specialized layout composable rendering a background color/image to a [SurfaceView].

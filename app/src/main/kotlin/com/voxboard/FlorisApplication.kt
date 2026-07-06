@@ -42,14 +42,13 @@ import com.voxboard.lib.devtools.Flog
 import com.voxboard.lib.devtools.LogTopic
 import com.voxboard.lib.devtools.flogError
 import com.voxboard.lib.ext.ExtensionManager
-import com.voxboard.jetpref.datastore.runtime.initAndroid
+import dev.patrickgold.jetpref.datastore.runtime.initAndroid
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.voxboard.lib.kotlin.io.deleteContentsRecursively
 import org.voxboard.lib.kotlin.tryOrNull
-import org.voxboard.libnative.dummyAdd
 import java.lang.ref.WeakReference
 
 /**
@@ -96,7 +95,6 @@ class FlorisApplication : Application() {
             )
             CrashUtility.install(this)
             FlorisEmojiCompat.init(this)
-            flogError { "dummy result: ${dummyAdd(3,4)}" }
 
             if (!UserManagerCompat.isUserUnlocked(this)) {
                 cacheDir?.deleteContentsRecursively()

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
-import org.florisboard.lib.kotlin.getKeyByValue
+import org.voxboard.lib.kotlin.getKeyByValue
 
 /**
  * SnyggValueEncoder is responsible for the representation of a [SnyggValue] specification and for providing methods

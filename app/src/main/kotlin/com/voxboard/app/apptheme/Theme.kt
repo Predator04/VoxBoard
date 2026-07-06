@@ -28,7 +28,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.voxboard.app.AppTheme
 import com.voxboard.app.FlorisPreferenceStore
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.color.neutralDynamicColorScheme
 import org.voxboard.lib.color.systemAccentOrDefault
 

@@ -22,10 +22,10 @@ import androidx.compose.ui.unit.dp
 import com.voxboard.R
 import com.voxboard.app.FlorisPreferenceStore
 import com.voxboard.app.enumDisplayEntriesOf
-import com.voxboard.jetpref.datastore.ui.ListPreference
-import com.voxboard.jetpref.datastore.ui.PreferenceLayout
-import com.voxboard.jetpref.material.ui.ColorRepresentation
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.datastore.ui.ListPreference
+import dev.patrickgold.jetpref.datastore.ui.PreferenceLayout
+import dev.patrickgold.jetpref.material.ui.ColorRepresentation
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
 import org.voxboard.lib.compose.stringRes
 
 private val FineTuneContentPadding = PaddingValues(horizontal = 8.dp)

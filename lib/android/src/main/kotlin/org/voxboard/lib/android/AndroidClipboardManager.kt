@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
 typealias AndroidClipboardManager = android.content.ClipboardManager
 // TODO: remove this once https://youtrack.jetbrains.com/issue/KT-34281 is fixed

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg
+package org.voxboard.lib.snygg
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -33,20 +33,20 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.encodeToJsonElement
-import org.florisboard.lib.snygg.value.SnyggCustomFontFamilyValue
-import org.florisboard.lib.snygg.value.SnyggFontStyleValue
-import org.florisboard.lib.snygg.value.SnyggFontWeightValue
-import org.florisboard.lib.snygg.value.SnyggGenericFontFamilyValue
-import org.florisboard.lib.snygg.value.SnyggContentScaleValue
-import org.florisboard.lib.snygg.value.SnyggShapeValue
-import org.florisboard.lib.snygg.value.SnyggSpSizeValue
-import org.florisboard.lib.snygg.value.SnyggStaticColorValue
-import org.florisboard.lib.snygg.value.SnyggTextAlignValue
-import org.florisboard.lib.snygg.value.SnyggTextDecorationLineValue
-import org.florisboard.lib.snygg.value.SnyggTextMaxLinesValue
-import org.florisboard.lib.snygg.value.SnyggTextOverflowValue
-import org.florisboard.lib.snygg.value.SnyggUndefinedValue
-import org.florisboard.lib.snygg.value.SnyggValue
+import org.voxboard.lib.snygg.value.SnyggCustomFontFamilyValue
+import org.voxboard.lib.snygg.value.SnyggFontStyleValue
+import org.voxboard.lib.snygg.value.SnyggFontWeightValue
+import org.voxboard.lib.snygg.value.SnyggGenericFontFamilyValue
+import org.voxboard.lib.snygg.value.SnyggContentScaleValue
+import org.voxboard.lib.snygg.value.SnyggShapeValue
+import org.voxboard.lib.snygg.value.SnyggSpSizeValue
+import org.voxboard.lib.snygg.value.SnyggStaticColorValue
+import org.voxboard.lib.snygg.value.SnyggTextAlignValue
+import org.voxboard.lib.snygg.value.SnyggTextDecorationLineValue
+import org.voxboard.lib.snygg.value.SnyggTextMaxLinesValue
+import org.voxboard.lib.snygg.value.SnyggTextOverflowValue
+import org.voxboard.lib.snygg.value.SnyggUndefinedValue
+import org.voxboard.lib.snygg.value.SnyggValue
 import kotlin.collections.contains
 
 sealed class SnyggPropertySet {

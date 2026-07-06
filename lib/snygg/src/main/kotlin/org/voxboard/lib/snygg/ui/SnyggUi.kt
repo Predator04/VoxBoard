@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.ui
+package org.voxboard.lib.snygg.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -46,24 +46,24 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.takeOrElse
 import com.materialkolor.dynamicColorScheme
 import kotlinx.coroutines.runBlocking
-import org.florisboard.lib.color.MaterialYouFlags
-import org.florisboard.lib.color.systemAccentOrDefault
-import org.florisboard.lib.snygg.CompiledFontFamilyData
-import org.florisboard.lib.snygg.SnyggQueryAttributes
-import org.florisboard.lib.snygg.SnyggRule
-import org.florisboard.lib.snygg.SnyggSelector
-import org.florisboard.lib.snygg.SnyggSinglePropertySet
-import org.florisboard.lib.snygg.SnyggSinglePropertySetEditor
-import org.florisboard.lib.snygg.SnyggStylesheet
-import org.florisboard.lib.snygg.SnyggTheme
-import org.florisboard.lib.snygg.value.SnyggAssetResolver
-import org.florisboard.lib.snygg.value.SnyggDefaultAssetResolver
-import org.florisboard.lib.snygg.value.SnyggDpSizeValue
-import org.florisboard.lib.snygg.value.SnyggNoValue
-import org.florisboard.lib.snygg.value.SnyggPaddingValue
-import org.florisboard.lib.snygg.value.SnyggStaticColorValue
-import org.florisboard.lib.snygg.value.SnyggUriValue
-import org.florisboard.lib.snygg.value.SnyggValue
+import org.voxboard.lib.color.MaterialYouFlags
+import org.voxboard.lib.color.systemAccentOrDefault
+import org.voxboard.lib.snygg.CompiledFontFamilyData
+import org.voxboard.lib.snygg.SnyggQueryAttributes
+import org.voxboard.lib.snygg.SnyggRule
+import org.voxboard.lib.snygg.SnyggSelector
+import org.voxboard.lib.snygg.SnyggSinglePropertySet
+import org.voxboard.lib.snygg.SnyggSinglePropertySetEditor
+import org.voxboard.lib.snygg.SnyggStylesheet
+import org.voxboard.lib.snygg.SnyggTheme
+import org.voxboard.lib.snygg.value.SnyggAssetResolver
+import org.voxboard.lib.snygg.value.SnyggDefaultAssetResolver
+import org.voxboard.lib.snygg.value.SnyggDpSizeValue
+import org.voxboard.lib.snygg.value.SnyggNoValue
+import org.voxboard.lib.snygg.value.SnyggPaddingValue
+import org.voxboard.lib.snygg.value.SnyggStaticColorValue
+import org.voxboard.lib.snygg.value.SnyggUriValue
+import org.voxboard.lib.snygg.value.SnyggValue
 
 internal val LocalSnyggTheme: ProvidableCompositionLocal<SnyggTheme> =
     compositionLocalOf {

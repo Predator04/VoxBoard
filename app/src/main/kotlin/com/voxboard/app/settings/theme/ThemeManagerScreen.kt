@@ -40,8 +40,8 @@ import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.ext.ExtensionComponentName
 import com.voxboard.lib.observeAsNonNullState
 import com.voxboard.themeManager
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 import org.voxboard.lib.compose.FlorisOutlinedBox
 import org.voxboard.lib.compose.defaultFlorisOutlinedBox
 import org.voxboard.lib.compose.rippleClickable

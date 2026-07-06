@@ -31,10 +31,10 @@ import com.voxboard.ime.dictionary.FlorisUserDictionaryDatabase
 import com.voxboard.ime.smartbar.quickaction.QuickActionArrangement
 import com.voxboard.lib.compose.FlorisConfirmDeleteDialog
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.datastore.ui.Preference
-import com.voxboard.jetpref.datastore.ui.PreferenceGroup
-import com.voxboard.jetpref.datastore.ui.SwitchPreference
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
+import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 import org.voxboard.lib.android.AndroidSettings
 import kotlinx.coroutines.launch
 import org.voxboard.lib.android.AndroidVersion

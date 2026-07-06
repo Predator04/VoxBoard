@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg
+package org.voxboard.lib.snygg
 
-import org.florisboard.lib.snygg.value.SnyggValueEncoder
+import org.voxboard.lib.snygg.value.SnyggValueEncoder
 
 enum class InheritBehavior {
     IMPLICITLY_OR_EXPLICITLY,

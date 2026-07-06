@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
 import androidx.compose.ui.graphics.Color
-import org.florisboard.lib.color.ColorPalette
+import org.voxboard.lib.color.ColorPalette
 import kotlin.math.roundToInt
 
 sealed interface SnyggAppearanceValue : SnyggValue

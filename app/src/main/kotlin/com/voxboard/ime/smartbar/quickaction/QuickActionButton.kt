@@ -34,7 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
-import com.voxboard.compose.tooltip.PlainTooltip
+import dev.patrickgold.compose.tooltip.PlainTooltip
 import com.voxboard.FlorisImeService
 import com.voxboard.ime.keyboard.ComputingEvaluator
 import com.voxboard.ime.keyboard.computeImageVector

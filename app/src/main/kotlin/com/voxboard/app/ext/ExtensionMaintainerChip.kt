@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.voxboard.lib.ext.ExtensionMaintainer
 import com.voxboard.lib.util.launchUrl
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
 import org.voxboard.lib.compose.FlorisChip
 
 @Composable

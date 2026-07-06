@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
 import android.annotation.SuppressLint
 import android.content.res.Resources

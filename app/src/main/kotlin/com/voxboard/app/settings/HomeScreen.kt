@@ -39,8 +39,8 @@ import com.voxboard.app.LocalNavController
 import com.voxboard.app.Routes
 import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.util.InputMethodUtils
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.ui.Preference
 import org.voxboard.lib.compose.FlorisErrorCard
 import org.voxboard.lib.compose.FlorisWarningCard
 import org.voxboard.lib.compose.stringRes

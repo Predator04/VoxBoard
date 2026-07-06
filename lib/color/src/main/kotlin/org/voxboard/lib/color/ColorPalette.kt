@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.color
+package org.voxboard.lib.color
 
 import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color

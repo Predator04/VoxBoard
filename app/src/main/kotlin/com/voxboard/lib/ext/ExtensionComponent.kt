@@ -17,7 +17,7 @@
 package com.voxboard.lib.ext
 
 import androidx.compose.runtime.saveable.Saver
-import com.voxboard.jetpref.datastore.model.PreferenceSerializer
+import dev.patrickgold.jetpref.datastore.model.PreferenceSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind

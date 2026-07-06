@@ -52,9 +52,9 @@ import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.ext.Extension
 import com.voxboard.lib.ext.ExtensionComponentName
 import com.voxboard.lib.observeAsNonNullState
-import com.voxboard.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import com.voxboard.jetpref.datastore.ui.Preference
-import com.voxboard.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
+import dev.patrickgold.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 import org.voxboard.lib.android.showLongToast
 import org.voxboard.lib.compose.FlorisOutlinedBox
 import org.voxboard.lib.compose.FlorisTextButton

@@ -52,7 +52,7 @@ import com.voxboard.lib.FlorisLocale
 import com.voxboard.lib.observeAsNonNullState
 import com.voxboard.nlpManager
 import com.voxboard.themeManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import java.text.SimpleDateFormat
 import java.util.*
 import org.voxboard.lib.android.AndroidVersion

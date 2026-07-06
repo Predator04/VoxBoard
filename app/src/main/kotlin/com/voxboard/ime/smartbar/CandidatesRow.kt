@@ -46,7 +46,7 @@ import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.keyboardManager
 import com.voxboard.nlpManager
 import com.voxboard.subtypeManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.compose.conditional
 import org.voxboard.lib.compose.florisHorizontalScroll
 import org.voxboard.lib.snygg.SnyggSelector

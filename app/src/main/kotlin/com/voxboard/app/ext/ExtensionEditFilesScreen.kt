@@ -49,9 +49,9 @@ import androidx.compose.ui.unit.dp
 import com.voxboard.R
 import com.voxboard.lib.cache.CacheManager
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.Preference
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
-import com.voxboard.jetpref.material.ui.JetPrefTextField
+import dev.patrickgold.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefTextField
 import java.io.File
 import java.util.*
 import org.voxboard.lib.android.query

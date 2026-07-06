@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.kotlin
+package org.voxboard.lib.kotlin
 
 fun Number.toStringWithoutDotZero(): String = this.toString().removeSuffix(".0")

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.compose
+package org.voxboard.lib.compose
 
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.ui.unit.Dp

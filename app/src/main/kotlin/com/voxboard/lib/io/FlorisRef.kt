@@ -19,7 +19,7 @@ package com.voxboard.lib.io
 import android.content.Context
 import android.net.Uri
 import androidx.annotation.VisibleForTesting
-import com.voxboard.jetpref.datastore.model.PreferenceSerializer
+import dev.patrickgold.jetpref.datastore.model.PreferenceSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind

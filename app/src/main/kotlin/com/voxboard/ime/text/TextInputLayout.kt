@@ -39,7 +39,7 @@ import com.voxboard.ime.smartbar.quickaction.QuickActionsOverflowPanel
 import com.voxboard.ime.text.keyboard.TextKeyboardLayout
 import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.keyboardManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.snygg.ui.SnyggIcon
 
 @Composable

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.color
+package org.voxboard.lib.color
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -29,7 +29,7 @@ import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamicColorScheme
 import com.materialkolor.dynamiccolor.ColorSpec
 import com.materialkolor.scheme.DynamicScheme
-import org.florisboard.lib.android.AndroidVersion
+import org.voxboard.lib.android.AndroidVersion
 
 val DEFAULT_GREEN = Color(0xFF4CAF50)
 

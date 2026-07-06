@@ -24,7 +24,7 @@ import androidx.compose.ui.Modifier
 import com.voxboard.app.LocalNavController
 import com.voxboard.app.Routes
 import com.voxboard.lib.ext.Extension
-import com.voxboard.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 
 @Composable
 fun <T : Extension> ExtensionList(

@@ -23,11 +23,11 @@ import com.voxboard.app.enumDisplayEntriesOf
 import com.voxboard.ime.input.HapticVibrationMode
 import com.voxboard.ime.input.InputFeedbackActivationMode
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.DialogSliderPreference
-import com.voxboard.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import com.voxboard.jetpref.datastore.ui.ListPreference
-import com.voxboard.jetpref.datastore.ui.PreferenceGroup
-import com.voxboard.jetpref.datastore.ui.SwitchPreference
+import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
+import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
+import dev.patrickgold.jetpref.datastore.ui.ListPreference
+import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
+import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 import org.voxboard.lib.android.systemVibratorOrNull
 import org.voxboard.lib.android.vibrate
 import org.voxboard.lib.compose.stringRes

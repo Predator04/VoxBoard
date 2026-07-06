@@ -111,7 +111,7 @@ import com.voxboard.lib.observeAsTransformingState
 import com.voxboard.lib.util.ViewUtils
 import com.voxboard.lib.util.debugSummarize
 import com.voxboard.lib.util.launchActivity
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import java.lang.ref.WeakReference
 import kotlinx.coroutines.flow.update
 import org.voxboard.lib.android.AndroidInternalR

@@ -43,7 +43,7 @@ import com.voxboard.app.Routes
 import com.voxboard.clipboardManager
 import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.util.launchUrl
-import com.voxboard.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.datastore.ui.Preference
 import org.voxboard.lib.android.stringRes
 import org.voxboard.lib.compose.FlorisCanvasIcon
 import org.voxboard.lib.compose.stringRes

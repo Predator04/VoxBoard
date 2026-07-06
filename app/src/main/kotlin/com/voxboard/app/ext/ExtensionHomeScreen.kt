@@ -27,7 +27,7 @@ import com.voxboard.app.LocalNavController
 import com.voxboard.app.Routes
 import com.voxboard.extensionManager
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.datastore.ui.Preference
 import org.voxboard.lib.compose.stringRes
 
 @Composable

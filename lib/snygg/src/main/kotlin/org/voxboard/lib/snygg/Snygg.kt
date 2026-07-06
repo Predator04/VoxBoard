@@ -14,35 +14,35 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg
+package org.voxboard.lib.snygg
 
-import org.florisboard.lib.snygg.value.SnyggCircleShapeValue
-import org.florisboard.lib.snygg.value.SnyggCustomFontFamilyValue
-import org.florisboard.lib.snygg.value.SnyggCutCornerDpShapeValue
-import org.florisboard.lib.snygg.value.SnyggCutCornerPercentShapeValue
-import org.florisboard.lib.snygg.value.SnyggDefinedVarValue
-import org.florisboard.lib.snygg.value.SnyggDpSizeValue
-import org.florisboard.lib.snygg.value.SnyggDynamicDarkColorValue
-import org.florisboard.lib.snygg.value.SnyggDynamicLightColorValue
-import org.florisboard.lib.snygg.value.SnyggFontStyleValue
-import org.florisboard.lib.snygg.value.SnyggFontWeightValue
-import org.florisboard.lib.snygg.value.SnyggGenericFontFamilyValue
-import org.florisboard.lib.snygg.value.SnyggInheritValue
-import org.florisboard.lib.snygg.value.SnyggNoValue
-import org.florisboard.lib.snygg.value.SnyggContentScaleValue
-import org.florisboard.lib.snygg.value.SnyggPaddingValue
-import org.florisboard.lib.snygg.value.SnyggRectangleShapeValue
-import org.florisboard.lib.snygg.value.SnyggRoundedCornerDpShapeValue
-import org.florisboard.lib.snygg.value.SnyggRoundedCornerPercentShapeValue
-import org.florisboard.lib.snygg.value.SnyggSpSizeValue
-import org.florisboard.lib.snygg.value.SnyggStaticColorValue
-import org.florisboard.lib.snygg.value.SnyggTextAlignValue
-import org.florisboard.lib.snygg.value.SnyggTextDecorationLineValue
-import org.florisboard.lib.snygg.value.SnyggTextMaxLinesValue
-import org.florisboard.lib.snygg.value.SnyggTextOverflowValue
-import org.florisboard.lib.snygg.value.SnyggUriValue
-import org.florisboard.lib.snygg.value.SnyggVarValue
-import org.florisboard.lib.snygg.value.SnyggYesValue
+import org.voxboard.lib.snygg.value.SnyggCircleShapeValue
+import org.voxboard.lib.snygg.value.SnyggCustomFontFamilyValue
+import org.voxboard.lib.snygg.value.SnyggCutCornerDpShapeValue
+import org.voxboard.lib.snygg.value.SnyggCutCornerPercentShapeValue
+import org.voxboard.lib.snygg.value.SnyggDefinedVarValue
+import org.voxboard.lib.snygg.value.SnyggDpSizeValue
+import org.voxboard.lib.snygg.value.SnyggDynamicDarkColorValue
+import org.voxboard.lib.snygg.value.SnyggDynamicLightColorValue
+import org.voxboard.lib.snygg.value.SnyggFontStyleValue
+import org.voxboard.lib.snygg.value.SnyggFontWeightValue
+import org.voxboard.lib.snygg.value.SnyggGenericFontFamilyValue
+import org.voxboard.lib.snygg.value.SnyggInheritValue
+import org.voxboard.lib.snygg.value.SnyggNoValue
+import org.voxboard.lib.snygg.value.SnyggContentScaleValue
+import org.voxboard.lib.snygg.value.SnyggPaddingValue
+import org.voxboard.lib.snygg.value.SnyggRectangleShapeValue
+import org.voxboard.lib.snygg.value.SnyggRoundedCornerDpShapeValue
+import org.voxboard.lib.snygg.value.SnyggRoundedCornerPercentShapeValue
+import org.voxboard.lib.snygg.value.SnyggSpSizeValue
+import org.voxboard.lib.snygg.value.SnyggStaticColorValue
+import org.voxboard.lib.snygg.value.SnyggTextAlignValue
+import org.voxboard.lib.snygg.value.SnyggTextDecorationLineValue
+import org.voxboard.lib.snygg.value.SnyggTextMaxLinesValue
+import org.voxboard.lib.snygg.value.SnyggTextOverflowValue
+import org.voxboard.lib.snygg.value.SnyggUriValue
+import org.voxboard.lib.snygg.value.SnyggVarValue
+import org.voxboard.lib.snygg.value.SnyggYesValue
 
 /**
  * Main object for defining all known Snygg property names.

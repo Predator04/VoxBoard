@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.kotlin
+package org.voxboard.lib.kotlin
 
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract

@@ -29,9 +29,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import com.voxboard.jetpref.material.ui.JetPrefDropdownMenuDefaults
-import com.voxboard.jetpref.material.ui.JetPrefTextField
-import com.voxboard.jetpref.material.ui.JetPrefTextFieldAppearance
+import dev.patrickgold.jetpref.material.ui.JetPrefDropdownMenuDefaults
+import dev.patrickgold.jetpref.material.ui.JetPrefTextField
+import dev.patrickgold.jetpref.material.ui.JetPrefTextFieldAppearance
 
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -16,12 +16,12 @@
 
 @file:Suppress("NOTHING_TO_INLINE")
 
-package org.florisboard.lib.android
+package org.voxboard.lib.android
 
 import android.content.ContentResolver
 import android.content.res.AssetFileDescriptor
 import android.net.Uri
-import org.florisboard.lib.kotlin.io.FsFile
+import org.voxboard.lib.kotlin.io.FsFile
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStream

@@ -55,10 +55,10 @@ import com.voxboard.lib.cache.CacheManager
 import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.ext.ExtensionManager
 import com.voxboard.lib.io.ZipUtils
-import com.voxboard.jetpref.datastore.runtime.AndroidAppDataStorage
-import com.voxboard.jetpref.datastore.runtime.FileBasedStorage
-import com.voxboard.jetpref.datastore.runtime.ImportStrategy
-import com.voxboard.jetpref.datastore.ui.Preference
+import dev.patrickgold.jetpref.datastore.runtime.AndroidAppDataStorage
+import dev.patrickgold.jetpref.datastore.runtime.FileBasedStorage
+import dev.patrickgold.jetpref.datastore.runtime.ImportStrategy
+import dev.patrickgold.jetpref.datastore.ui.Preference
 import java.io.FileNotFoundException
 import java.text.DateFormat
 import java.util.*

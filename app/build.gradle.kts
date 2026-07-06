@@ -116,7 +116,7 @@ android {
             resValue("mipmap", "floris_app_icon", "@mipmap/ic_app_icon_debug")
             resValue("mipmap", "floris_app_icon_round", "@mipmap/ic_app_icon_debug_round")
             resValue("drawable", "floris_app_icon_foreground", "@drawable/ic_app_icon_debug_foreground")
-            resValue("string", "floris_app_name", "FlorisBoard Debug")
+            resValue("string", "floris_app_name", "VoxBoard Debug")
         }
 
         create("beta") {
@@ -130,7 +130,7 @@ android {
             resValue("mipmap", "floris_app_icon", "@mipmap/ic_app_icon_beta")
             resValue("mipmap", "floris_app_icon_round", "@mipmap/ic_app_icon_beta_round")
             resValue("drawable", "floris_app_icon_foreground", "@drawable/ic_app_icon_beta_foreground")
-            resValue("string", "floris_app_name", "FlorisBoard Beta")
+            resValue("string", "floris_app_name", "VoxBoard Beta")
         }
 
         named("release") {
@@ -207,17 +207,16 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.mikepenz.aboutlibraries.core)
     implementation(libs.mikepenz.aboutlibraries.compose)
-    implementation(libs.voxboard.compose.tooltip)
-    implementation(libs.voxboard.jetpref.datastore.model)
-    ksp(libs.voxboard.jetpref.datastore.model.processor)
-    implementation(libs.voxboard.jetpref.datastore.ui)
-    implementation(libs.voxboard.jetpref.material.ui)
+    implementation(libs.patrickgold.compose.tooltip)
+    implementation(libs.patrickgold.jetpref.datastore.model)
+    ksp(libs.patrickgold.jetpref.datastore.model.processor)
+    implementation(libs.patrickgold.jetpref.datastore.ui)
+    implementation(libs.patrickgold.jetpref.material.ui)
 
     implementation(projects.lib.android)
     implementation(projects.lib.color)
     implementation(projects.lib.compose)
     implementation(projects.lib.kotlin)
-    implementation(projects.lib.native)
     implementation(projects.lib.snygg)
 
     testImplementation(libs.kotlin.test.junit5)

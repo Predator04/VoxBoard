@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
 /**
  * SnyggValue is the base interface for all possible property values a Snygg stylesheet can hold. In general, a Snygg

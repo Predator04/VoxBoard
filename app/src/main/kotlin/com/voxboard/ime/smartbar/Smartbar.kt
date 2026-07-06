@@ -63,7 +63,7 @@ import com.voxboard.ime.smartbar.quickaction.ToggleOverflowPanelAction
 import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.keyboardManager
 import com.voxboard.nlpManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import kotlinx.coroutines.launch
 import org.voxboard.lib.android.AndroidVersion
 import org.voxboard.lib.compose.horizontalTween

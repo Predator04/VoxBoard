@@ -24,9 +24,9 @@ import com.voxboard.ime.smartbar.CandidatesDisplayMode
 import com.voxboard.ime.smartbar.ExtendedActionsPlacement
 import com.voxboard.ime.smartbar.SmartbarLayout
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.ui.ListPreference
-import com.voxboard.jetpref.datastore.ui.PreferenceGroup
-import com.voxboard.jetpref.datastore.ui.SwitchPreference
+import dev.patrickgold.jetpref.datastore.ui.ListPreference
+import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
+import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 import org.voxboard.lib.compose.stringRes
 
 @Composable

@@ -33,7 +33,7 @@ import com.voxboard.app.FlorisPreferenceStore
 import com.voxboard.ime.smartbar.SmartbarLayout
 import com.voxboard.ime.text.keyboard.TextKeyData
 import com.voxboard.keyboardManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.snygg.ui.SnyggRow
 
 internal val ToggleOverflowPanelAction = QuickAction.InsertKey(TextKeyData.TOGGLE_ACTIONS_OVERFLOW)

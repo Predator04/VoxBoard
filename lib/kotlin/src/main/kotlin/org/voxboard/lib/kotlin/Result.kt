@@ -16,7 +16,7 @@
 
 @file:Suppress("NOTHING_TO_INLINE")
 
-package org.florisboard.lib.kotlin
+package org.voxboard.lib.kotlin
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred

@@ -33,7 +33,7 @@ import androidx.compose.ui.text.font.FontFamily
 import com.voxboard.R
 import com.voxboard.ime.core.DisplayLanguageNamesIn
 import com.voxboard.lib.compose.FlorisScreen
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.android.showLongToastSync
 import org.voxboard.lib.compose.FlorisIconButton
 import org.voxboard.lib.compose.stringRes

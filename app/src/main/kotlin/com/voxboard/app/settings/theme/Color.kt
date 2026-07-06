@@ -17,7 +17,7 @@
 package com.voxboard.app.settings.theme
 
 import androidx.compose.ui.graphics.Color
-import com.voxboard.jetpref.datastore.model.PreferenceSerializer
+import dev.patrickgold.jetpref.datastore.model.PreferenceSerializer
 
 object ColorPreferenceSerializer : PreferenceSerializer<Color> {
     @OptIn(ExperimentalStdlibApi::class)

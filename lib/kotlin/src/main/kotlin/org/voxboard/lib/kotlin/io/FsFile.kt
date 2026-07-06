@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.kotlin.io
+package org.voxboard.lib.kotlin.io
 
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.decodeFromString

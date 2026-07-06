@@ -91,11 +91,11 @@ import com.voxboard.lib.compose.rememberPreviewFieldController
 import com.voxboard.lib.ext.ExtensionValidation
 import com.voxboard.lib.rememberValidationResult
 import com.voxboard.themeManager
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
-import com.voxboard.jetpref.material.ui.JetPrefDropdown
-import com.voxboard.jetpref.material.ui.JetPrefListItem
-import com.voxboard.jetpref.material.ui.JetPrefTextField
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefDropdown
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.material.ui.JetPrefTextField
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.voxboard.lib.android.showLongToastSync

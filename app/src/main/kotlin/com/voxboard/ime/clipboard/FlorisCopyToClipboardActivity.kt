@@ -49,7 +49,7 @@ import androidx.compose.ui.unit.dp
 import com.voxboard.R
 import com.voxboard.app.FlorisPreferenceStore
 import com.voxboard.app.apptheme.FlorisAppTheme
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.android.AndroidClipboardManager
 import org.voxboard.lib.android.AndroidVersion
 import org.voxboard.lib.android.stringRes

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
-import org.florisboard.lib.kotlin.toStringWithoutDotZero
+import org.voxboard.lib.kotlin.toStringWithoutDotZero
 
 typealias SnyggIdToValueMap = MutableMap<String, String>
 

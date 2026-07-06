@@ -34,7 +34,7 @@ import com.voxboard.app.FlorisPreferenceStore
 import com.voxboard.ime.keyboard.FlorisImeSizing
 import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.keyboardManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.compose.stringRes
 import org.voxboard.lib.snygg.ui.SnyggBox
 import org.voxboard.lib.snygg.ui.SnyggButton

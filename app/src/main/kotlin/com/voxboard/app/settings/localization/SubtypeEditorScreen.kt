@@ -79,11 +79,11 @@ import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.ext.ExtensionComponentName
 import com.voxboard.lib.observeAsNonNullState
 import com.voxboard.subtypeManager
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.material.ui.JetPrefAlertDialog
-import com.voxboard.jetpref.material.ui.JetPrefDropdown
-import com.voxboard.jetpref.material.ui.JetPrefDropdownMenuDefaults
-import com.voxboard.jetpref.material.ui.JetPrefListItem
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
+import dev.patrickgold.jetpref.material.ui.JetPrefDropdown
+import dev.patrickgold.jetpref.material.ui.JetPrefDropdownMenuDefaults
+import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 import org.voxboard.lib.compose.FlorisButtonBar
 import org.voxboard.lib.compose.FlorisDropdownLikeButton
 import org.voxboard.lib.compose.florisScrollbar

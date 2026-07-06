@@ -30,7 +30,7 @@ import androidx.compose.ui.text.TextStyle
 import com.voxboard.app.FlorisPreferenceStore
 import com.voxboard.keyboardManager
 import com.voxboard.themeManager
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.snygg.ui.ProvideSnyggTheme
 import org.voxboard.lib.snygg.ui.rememberSnyggTheme
 

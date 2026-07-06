@@ -43,7 +43,7 @@ import com.voxboard.ime.text.keyboard.TextKeyboard
 import com.voxboard.keyboardManager
 import com.voxboard.lib.observeAsTransformingState
 import com.voxboard.lib.util.ViewUtils
-import com.voxboard.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import org.voxboard.lib.android.AndroidVersion
 import org.voxboard.lib.android.isOrientationLandscape
 

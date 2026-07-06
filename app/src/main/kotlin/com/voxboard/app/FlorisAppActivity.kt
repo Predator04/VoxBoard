@@ -53,8 +53,8 @@ import com.voxboard.lib.compose.LocalPreviewFieldController
 import com.voxboard.lib.compose.PreviewKeyboardField
 import com.voxboard.lib.compose.rememberPreviewFieldController
 import com.voxboard.lib.util.AppVersionUtils
-import com.voxboard.jetpref.datastore.model.observeAsState
-import com.voxboard.jetpref.datastore.ui.ProvideDefaultDialogPrefStrings
+import dev.patrickgold.jetpref.datastore.model.observeAsState
+import dev.patrickgold.jetpref.datastore.ui.ProvideDefaultDialogPrefStrings
 import org.voxboard.lib.android.AndroidVersion
 import org.voxboard.lib.android.hideAppIcon
 import org.voxboard.lib.android.showAppIcon

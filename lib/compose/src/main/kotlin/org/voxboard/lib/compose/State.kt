@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.compose
+package org.voxboard.lib.compose
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -25,8 +25,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import org.florisboard.lib.android.AndroidSettingsHelper
-import org.florisboard.lib.android.SystemSettingsObserver
+import org.voxboard.lib.android.AndroidSettingsHelper
+import org.voxboard.lib.android.SystemSettingsObserver
 
 @Composable
 fun AndroidSettingsHelper.observeAsState(
