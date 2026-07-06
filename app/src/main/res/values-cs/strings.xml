@@ -601,7 +601,7 @@
     <string name="backup_and_restore__restore__success">Data úspěšně obnovena!</string>
     <string name="backup_and_restore__restore__failure">Nepodařilo se obnovit data: {error_message}</string>
     <!-- Crash Dialog strings -->
-    <string name="crash_dialog__title" comment="Title of crash dialog">Zpráva o chybě florisboardu</string>
+    <string name="crash_dialog__title" comment="Title of crash dialog">Zpráva o chybě voxboardu</string>
     <string name="crash_dialog__description" comment="Description of crash dialog">Omlouváme se za potíže, ale aplikace VoxBoard spadla kvůli neočekávané chybě.</string>
     <string name="crash_dialog__report_instructions" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Pokud chcete tuto chybu nahlásit, podívejte se nejprve do nástroje pro sledování problémů na GitHubu, pokud již nebyla chyba nahlášena.\nPokud tomu tak není, zkopírujte vygenerovaný záznam o chybě a otevřete nový problém. Použijte šablonu „%s“ a vyplňte popis, kroky k reprodukci a na konec vložte vygenerovaný záznam o pádu. Pomůžete tak k tomu, aby byl VoxBoard lepší a stabilnější pro všechny. Děkujeme!</string>
     <string name="crash_dialog__copy_to_clipboard" comment="Label of Copy to clipboard button in crash dialog">Kopírovat do schránky</string>
