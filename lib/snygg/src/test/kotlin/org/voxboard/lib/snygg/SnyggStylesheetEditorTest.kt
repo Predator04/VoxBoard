@@ -1,4 +1,4 @@
-package org.florisboard.lib.snygg
+package org.voxboard.lib.snygg
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.graphics.Color

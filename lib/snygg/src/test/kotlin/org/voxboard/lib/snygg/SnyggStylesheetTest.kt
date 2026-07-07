@@ -1,4 +1,4 @@
-package org.florisboard.lib.snygg
+package org.voxboard.lib.snygg
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp

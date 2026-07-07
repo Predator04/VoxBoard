@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-package org.florisboard.libnative
+package org.voxboard.libnative
 
 external fun dummyAdd(a: Int, b: Int): Int

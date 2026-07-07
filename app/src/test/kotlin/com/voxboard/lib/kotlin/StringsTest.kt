@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.florisboard.lib.kotlin
+package com.voxboard.lib.kotlin
 
 /*
 import io.kotest.core.spec.style.FreeSpec

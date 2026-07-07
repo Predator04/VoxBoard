@@ -1,4 +1,4 @@
-package org.florisboard.lib.snygg.value
+package org.voxboard.lib.snygg.value
 
 import org.junit.jupiter.api.assertAll
 import java.net.URI

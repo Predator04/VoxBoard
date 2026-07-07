@@ -23,7 +23,7 @@ plugins {
 }
 
 val projectGroupId: String by project
-val artifactId = "florisboard-lib-kotlin"
+val artifactId = "voxboard-lib-kotlin"
 val projectVersion: String by project
 
 java {
