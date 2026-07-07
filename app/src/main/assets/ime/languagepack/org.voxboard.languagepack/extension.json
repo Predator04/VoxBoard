@@ -1,7 +1,7 @@
 {
   "$": "ime.extension.languagepack",
   "meta": {
-    "id": "org.florisboard.languagepack",
+    "id": "org.voxboard.languagepack",
     "version": "0.0.0",
     "title": "Default language pack",
     "description": "Default language pack which are always available.",

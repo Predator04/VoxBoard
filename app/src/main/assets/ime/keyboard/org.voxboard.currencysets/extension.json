@@ -1,7 +1,7 @@
 {
   "$": "ime.extension.keyboard",
   "meta": {
-    "id": "org.florisboard.currencysets",
+    "id": "org.voxboard.currencysets",
     "version": "0.1.0",
     "title": "Default currency sets",
     "description": "Default currency sets which are always available.",

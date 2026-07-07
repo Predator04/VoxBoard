@@ -1,7 +1,7 @@
 {
   "$": "ime.extension.theme",
   "meta": {
-    "id": "org.florisboard.themes.my",
+    "id": "org.voxboard.themes.my",
     "version": "0.2.0",
     "title": "FlorisBoard default themes (Material You)",
     "description": "Default Material You themes (both day and night) for the keyboard UI",

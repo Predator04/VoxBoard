@@ -1,7 +1,7 @@
 {
   "$": "ime.extension.keyboard",
   "meta": {
-    "id": "org.florisboard.composers",
+    "id": "org.voxboard.composers",
     "version": "0.1.1",
     "title": "Default composers",
     "description": "Default composers which are always available.",

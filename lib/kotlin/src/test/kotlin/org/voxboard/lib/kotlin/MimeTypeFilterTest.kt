@@ -100,7 +100,7 @@ class MimeTypeFilterTest {
 
         @Test
         fun `legacy otf file should work with wildcard filters`() {
-            // https://github.com/florisboard/florisboard/issues/2957
+            // https://github.com/Predator04/VoxBoard/issues
             val filter = mimeTypeFilterOf(
                 "font/*",
                 "application/font-*",

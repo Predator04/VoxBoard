@@ -1,7 +1,7 @@
 {
   "$": "ime.extension.theme",
   "meta": {
-    "id": "org.florisboard.themes",
+    "id": "org.voxboard.themes",
     "version": "0.2.0",
     "title": "FlorisBoard default themes",
     "description": "Default themes (both day and night) for the keyboard UI",
