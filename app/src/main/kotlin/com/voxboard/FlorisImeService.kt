@@ -102,6 +102,7 @@ import com.voxboard.ime.text.TextInputLayout
 import com.voxboard.ime.theme.FlorisImeTheme
 import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.ime.theme.WallpaperChangeReceiver
+import com.voxboard.ime.voice.VoiceInputHandler
 import com.voxboard.lib.compose.SystemUiIme
 import com.voxboard.lib.devtools.LogTopic
 import com.voxboard.lib.devtools.flogError
@@ -231,26 +232,36 @@ class FlorisImeService : LifecycleInputMethodService() {
 
         fun switchToVoiceInputMethod(): Boolean {
             val ims = FlorisImeServiceReference.get() ?: return false
-            val imm = ims.systemServiceOrNull(InputMethodManager::class) ?: return false
-            val list: List<InputMethodInfo> = imm.enabledInputMethodList
-            for (el in list) {
-                for (i in 0 until el.subtypeCount) {
-                    if (el.getSubtypeAt(i).mode != "voice") continue
-                    if (AndroidVersion.ATLEAST_API28_P) {
-                        ims.switchInputMethod(el.id, el.getSubtypeAt(i))
-                        return true
-                    } else {
-                        ims.window.window?.let { window ->
-                            @Suppress("DEPRECATION")
-                            imm.setInputMethod(window.attributes.token, el.id)
-                            return true
-                        }
-                    }
-                }
-            }
-            ims.showShortToastSync("Failed to find voice IME, do you have one installed?")
-            return false
+            ims.startVoiceInput()
+            return true
         }
+    }
+
+    private fun startVoiceInput() {
+        if (voiceInputHandler.isListening()) {
+            voiceInputHandler.stopListening()
+            showShortToastSync("Voice input stopped")
+            return
+        }
+        voiceInputHandler.startListening(currentInputConnection, object : VoiceInputHandler.RecognitionCallback {
+            override fun onVoiceResult(text: String) {
+                flogInfo { "Voice committed: $text" }
+            }
+
+            override fun onVoiceError(message: String) {
+                flogError { "Voice error: $message" }
+                showShortToastSync(message)
+            }
+
+            override fun onVoiceListening() {
+                flogInfo { "Voice is now listening" }
+                showShortToastSync("Listening...")
+            }
+
+            override fun onVoiceStopped() {
+                flogInfo { "Voice listening stopped" }
+            }
+        })
     }
 
     private val prefs by FlorisPreferenceStore
@@ -259,6 +270,8 @@ class FlorisImeService : LifecycleInputMethodService() {
     private val nlpManager by nlpManager()
     private val subtypeManager by subtypeManager()
     private val themeManager by themeManager()
+
+    private val voiceInputHandler by lazy { VoiceInputHandler(this) }
 
     private val activeState get() = keyboardManager.activeState
     private var inputWindowView by mutableStateOf<View?>(null)
@@ -341,6 +354,7 @@ class FlorisImeService : LifecycleInputMethodService() {
 
     override fun onDestroy() {
         super.onDestroy()
+        voiceInputHandler.destroy()
         unregisterReceiver(wallpaperChangeReceiver)
         FlorisImeServiceReference = WeakReference(null)
         inputWindowView = null
