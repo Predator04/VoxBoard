@@ -61,10 +61,7 @@ private var FlorisApplicationReference = WeakReference<FlorisApplication?>(null)
 class FlorisApplication : Application() {
     companion object {
         init {
-            try {
-                System.loadLibrary("fl_native")
-            } catch (_: Exception) {
-            }
+            // Native library (fl_native) not built for this fork — placeholder only
         }
     }
 
