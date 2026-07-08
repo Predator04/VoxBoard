@@ -1,12 +1,12 @@
 <resources>
-    <string name="voxboard__repo_url" translatable="false">https://github.com/voxboard/voxboard</string>
-    <string name="voxboard__issue_tracker_url" translatable="false">https://github.com/voxboard/voxboard/issues</string>
-    <string name="voxboard__privacy_policy_url" translatable="false">https://voxboard.org/legal/privacy/</string>
-    <string name="voxboard__changelog_url" translatable="false">https://github.com/voxboard/voxboard/releases/v{version}</string>
-    <string name="voxboard__commit_by_hash_url" translatable="false">https://github.com/voxboard/voxboard/commit/{hash}</string>
-    <string name="voxboard__spell_checker_wiki_url" translatable="false">https://github.com/voxboard/voxboard/wiki/System-spell-checker-service</string>
-    <string name="voxboard__theme_editor_wiki_url" translatable="false">https://github.com/voxboard/voxboard/wiki/Using-the-new-Theme-Editor</string>
-    <string name="voxboard__internal_key_codes_url" translatable="false">https://github.com/voxboard/voxboard/blob/main/app/src/main/kotlin/dev/voxboard/voxboard/ime/text/key/KeyCode.kt</string>
+    <string name="voxboard__repo_url" translatable="false">https://github.com/Predator04/VoxBoard</string>
+    <string name="voxboard__issue_tracker_url" translatable="false">https://github.com/Predator04/VoxBoard/issues</string>
+    <string name="voxboard__privacy_policy_url" translatable="false">https://github.com/Predator04/VoxBoard</string>
+    <string name="voxboard__changelog_url" translatable="false">https://github.com/Predator04/VoxBoard/releases/tag/v{version}</string>
+    <string name="voxboard__commit_by_hash_url" translatable="false">https://github.com/Predator04/VoxBoard/commit/{hash}</string>
+    <string name="voxboard__spell_checker_wiki_url" translatable="false">https://github.com/Predator04/VoxBoard/wiki/System-spell-checker-service</string>
+    <string name="voxboard__theme_editor_wiki_url" translatable="false">https://github.com/Predator04/VoxBoard/wiki/Using-the-new-Theme-Editor</string>
+    <string name="voxboard__internal_key_codes_url" translatable="false">https://github.com/Predator04/VoxBoard/blob/main/app/src/main/kotlin/com/voxboard/ime/text/key/KeyCode.kt</string>
     <string name="voxboard__character_key_codes_url" translatable="false">https://unicode-table.com/en</string>
 
     <string name="general__system_string_placeholder" translatable="false">%s</string>
@@ -20,7 +20,7 @@
     <string name="key__view_symbols" translatable="false">\?123</string>
     <string name="key__view_symbols2" translatable="false">=\\&lt;</string>
     <string name="key__view_half_space" translatable="false">&#8626;</string>
-    <string name="key__view_keshida" translatable="false">"یــــ"</string>
+    <string name="key__view_keshida" translatable="false">"يــــ"</string>
     <string name="key__dotted_circle" translatable="false">&#9676;</string>
 
     <string name="clipboard__sensitive_clip_content" translatable="false">************</string>
