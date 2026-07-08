@@ -256,38 +256,106 @@ class NlpManager(context: Context) {
 
     /**
      * Synchronous autocorrect lookup — runs on the current thread.
-     * Checks if the last word before cursor is in the dictionary, and
-     * if not, finds the closest edit-distance match.
+     * Uses keyboard-proximity-aware matching (QWERTY) to find the best
+     * correction for a misspelled word. Considers:
+     * - Levenshtein distance weighted by key proximity
+     * - Common QWERTY mistypes (adjacent key press, transposed letters)
+     * - Word frequency from dictionary
      * Returns null if the word is already correct or no good match found.
      */
     fun synchronousAutocorrect(): SuggestionCandidate? {
         if (!prefs.suggestion.enabled.get()) return null
         val content = editorInstance.activeContent
         val currentWord = content.currentWordText.lowercase().trim()
-        if (currentWord.length < 3) return null
+        val len = currentWord.length
+        if (len < 2) return null
+        // Single letters: almost always correct (I, a)
+        if (len == 1) return null
+
         return runBlocking {
             val provider = getSuggestionProvider(subtypeManager.activeSubtype)
-            // Check if word exists in dictionary
             val words = provider.getListOfWords(subtypeManager.activeSubtype)
-            if (words.contains(currentWord)) return@runBlocking null // Already correct
-            // Find closest match by Levenshtein distance
-            val closest = words
-                .filter { it.length in (currentWord.length - 2)..(currentWord.length + 2) }
-                .map { w -> w to levenshteinDistance(currentWord, w) }
-                .filter { (_, dist) -> dist <= 2 || (dist <= 3 && currentWord.length > 5) }
-                .sortedBy { (_, dist) -> dist }
+            if (words.contains(currentWord)) return@runBlocking null
+
+            // Pre-compute frequencies (suspension lifted at start of block)
+            val freqs = mutableMapOf<String, Double>()
+            for (w in words) {
+                if (w.length in (len - 2)..(len + 2)) {
+                    freqs[w] = provider.getFrequencyForWord(subtypeManager.activeSubtype, w)
+                }
+            }
+
+            // Score each dictionary word by combined proximity + edit distance
+            val scored = words.asSequence()
+                .filter { it.length in (len - 2)..(len + 2) }
+                .map { candidate ->
+                    val ed = levenshteinDistance(currentWord, candidate)
+                    val prox = proximityScore(currentWord, candidate)
+                    val freq = freqs[candidate] ?: 0.0
+                    val score = (ed * 2.0) + ((1.0 - prox) * 3.0) - (freq * 0.8)
+                    Triple(candidate, score, freq)
+                }
+                .filter { (_, score, _) ->
+                    score < 6.0
+                }
+                .sortedBy { (_, score) -> score }
                 .firstOrNull()
-            if (closest != null) {
-                val freq = provider.getFrequencyForWord(subtypeManager.activeSubtype, closest.first)
+
+            if (scored != null) {
                 WordSuggestionCandidate(
-                    text = closest.first,
-                    confidence = (freq * 0.9 + 0.1).coerceIn(0.0, 1.0),
+                    text = scored.first,
+                    confidence = (scored.third * 0.7 + 0.3).coerceIn(0.0, 1.0),
                     isEligibleForAutoCommit = true,
                 )
             } else {
                 null
             }
         }
+    }
+
+    /**
+     * Compute keyboard-proximity-aware similarity between typed word and candidate.
+     * Returns 0.0 to 1.0 where 1.0 = perfect proximity match.
+     *
+     * Uses QWERTY key adjacency map: common typos are adjacent key presses.
+     */
+    private fun proximityScore(typed: String, candidate: String): Double {
+        var matches = 0
+        val minLen = minOf(typed.length, candidate.length)
+        for (i in 0 until minLen) {
+            if (typed[i] == candidate[i]) {
+                matches++
+            } else if (areKeysNear(typed[i], candidate[i])) {
+                matches += 1 // nearby key press counts as partial match
+            }
+        }
+        // Penalize length difference
+        val lenDiff = Math.abs(typed.length - candidate.length)
+        return (matches.toDouble() / maxOf(typed.length, candidate.length)) * (1.0 / (1.0 + lenDiff * 0.5))
+    }
+
+    /**
+     * QWERTY keyboard adjacency map. Returns true if two keys are physically
+     * adjacent on a standard QWERTY layout (including same-key).
+     */
+    private fun areKeysNear(a: Char, b: Char): Boolean {
+        if (a == b) return true
+        val key = KEY_PROXIMITY_MAP[a]
+        return key?.contains(b) == true
+    }
+
+    companion object {
+        // QWERTY proximity: each key maps to its physically adjacent keys
+        private val KEY_PROXIMITY_MAP = mapOf(
+            'q' to "qaw", 'w' to "wqase", 'e' to "ewrsd", 'r' to "retdf",
+            't' to "tryfg", 'y' to "ytugh", 'u' to "uyihj", 'i' to "iuokj",
+            'o' to "oipkl", 'p' to "po[l;",
+            'a' to "aqwsz", 's' to "sewadxz", 'd' to "drefcxs", 'f' to "frtgcv",
+            'g' to "gtyhbv", 'h' to "hyujnb", 'j' to "juikmn", 'k' to "kiolm,",
+            'l' to "lop;.,",
+            'z' to "zasx", 'x' to "xsdc", 'c' to "cdfv", 'v' to "vfgcb",
+            'b' to "bghnv", 'n' to "nhjbm", 'm' to "mjkn",
+        )
     }
 
     /**

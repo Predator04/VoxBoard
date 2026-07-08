@@ -39,6 +39,18 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
         // Default user ID used for all subtypes, unless otherwise specified.
         // See `ime/core/Subtype.kt` Line 210 and 211 for the default usage
         const val ProviderId = "org.voxboard.nlp.providers.latin"
+
+        // QWERTY key adjacency map for proximity-aware autocorrect
+        val KEY_PROXIMITY_MAP = mapOf(
+            'q' to "qaw", 'w' to "wqase", 'e' to "ewrsd", 'r' to "retdf",
+            't' to "tryfg", 'y' to "ytugh", 'u' to "uyihj", 'i' to "iuokj",
+            'o' to "oipkl", 'p' to "po[l;",
+            'a' to "aqwsz", 's' to "sewadxz", 'd' to "drefcxs", 'f' to "frtgcv",
+            'g' to "gtyhbv", 'h' to "hyujnb", 'j' to "juikmn", 'k' to "kiolm,",
+            'l' to "lop;.,",
+            'z' to "zasx", 'x' to "xsdc", 'c' to "cdfv", 'v' to "vfgcb",
+            'b' to "bghnv", 'n' to "nhjbm", 'm' to "mjkn",
+        )
     }
 
     private val appContext by context.appContext()
@@ -89,20 +101,23 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
         isPrivateSession: Boolean,
     ): SpellingResult {
         val lower = word.lowercase()
-        // Quick check: if word is empty or a single char, it's probably fine
         if (lower.length <= 1) return SpellingResult.validWord()
-        // Check if word exists in our dictionary
         val exists = wordData.withLock { it.containsKey(lower) }
         if (exists) return SpellingResult.validWord()
-        // Find close suggestions via edit distance (Levenshtein)
+        // Find suggestions via proximity-weighted edit distance
         val suggestions = wordData.withLock { data ->
             data.entries
                 .filter { (w, _) -> w.length in (lower.length - 2)..(lower.length + 2) }
-                .map { (w, _) -> w to levenshteinDistance(lower, w) }
-                .filter { (_, dist) -> dist <= 2 || (dist <= 3 && lower.length > 5) }
-                .sortedBy { (_, dist) -> dist }
+                .map { (w, freq) ->
+                    val ed = levenshteinDistance(lower, w)
+                    val prox = proximityScore(lower, w)
+                    val score = (ed * 2.0) + ((1.0 - prox) * 3.0) - (freq / 255.0 * 0.8)
+                    Triple(w, score, freq)
+                }
+                .filter { (_, score, _) -> score < 6.0 }
+                .sortedBy { (_, score) -> score }
                 .take(maxSuggestionCount.coerceIn(1, 20))
-                .map { (w, _) -> w }
+                .map { (w, _, _) -> w }
         }
         return if (suggestions.isEmpty()) {
             SpellingResult.validWord()
@@ -121,29 +136,30 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
         val currentWord = content.composingText.lowercase().trim()
         if (currentWord.isBlank()) return emptyList()
         val topCandidates = wordData.withLock { data ->
-            // Check if current word is an exact misspelling — find closest match
             val exactExists = data.containsKey(currentWord)
-            if (!exactExists && currentWord.length >= 3) {
-                // The user typed something not in the dictionary.
-                // Find the closest edit-distance match as autocorrect candidate.
-                val closest = data.entries
+            if (!exactExists && currentWord.length >= 2) {
+                // Word not in dictionary — find proximity+edit-distance match
+                val scored = data.entries
                     .filter { (w, _) -> w.length in (currentWord.length - 2)..(currentWord.length + 2) }
-                    .map { (w, freq) -> Triple(w, levenshteinDistance(currentWord, w), freq) }
-                    .filter { (_, dist, _) -> dist <= 2 }
-                    .sortedWith(compareBy<Triple<String, Int, Int>> { it.second }.thenByDescending { it.third })
-                    .firstOrNull()
-                if (closest != null) {
-                    val word = closest.first
-                    listOf(
+                    .map { (w, freq) ->
+                        val ed = levenshteinDistance(currentWord, w)
+                        val prox = proximityScore(currentWord, w)
+                        val score = (ed * 2.0) + ((1.0 - prox) * 3.0) - (freq / 255.0 * 0.8)
+                        Triple(w, score, freq)
+                    }
+                    .filter { (_, score, _) -> score < 5.0 }
+                    .sortedBy { (_, score) -> score }
+                    .take(maxCandidateCount.coerceIn(1, 10))
+                    .map { (w, _, freq) ->
                         WordSuggestionCandidate(
-                            text = word,
-                            confidence = 0.95,
+                            text = w,
+                            confidence = (freq / 255.0 * 0.7 + 0.3).coerceIn(0.0, 1.0),
                             isEligibleForAutoCommit = true,
                             sourceProvider = this@LatinLanguageProvider,
                         )
-                    )
-                } else {
-                    // Prefix completions as fallback
+                    }
+                if (scored.isNotEmpty()) scored else {
+                    // Fallback: prefix completions
                     data.entries
                         .filter { (w, _) -> w.startsWith(currentWord) && w != currentWord }
                         .sortedByDescending { (_, freq) -> freq }
@@ -174,6 +190,27 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
             }
         }
         return topCandidates
+    }
+
+    // --- Keyboard proximity helpers ---
+
+    private fun proximityScore(typed: String, candidate: String): Double {
+        var matches = 0
+        val minLen = minOf(typed.length, candidate.length)
+        for (i in 0 until minLen) {
+            if (typed[i] == candidate[i]) {
+                matches++
+            } else if (areKeysNear(typed[i], candidate[i])) {
+                matches += 1
+            }
+        }
+        val lenDiff = kotlin.math.abs(typed.length - candidate.length)
+        return (matches.toDouble() / maxOf(typed.length, candidate.length)) * (1.0 / (1.0 + lenDiff * 0.5))
+    }
+
+    private fun areKeysNear(a: Char, b: Char): Boolean {
+        if (a == b) return true
+        return KEY_PROXIMITY_MAP[a]?.contains(b) == true
     }
 
     /**
