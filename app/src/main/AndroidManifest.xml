@@ -8,6 +8,12 @@
     <!-- Permission needed for voice input (microphone access) -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
+    <!-- Internet access for update checking and GitHub API calls -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Permission needed to install APK updates from self-updater -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+
     <!-- Permission needed to create notifications on devices running Android 13+ -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
@@ -131,6 +137,19 @@
                 <data android:mimeType="image/*"/>
             </intent-filter>
         </activity>
+
+        <!-- Permission trampoline for microphone runtime request (IME can't request directly) -->
+        <activity
+            android:name="com.voxboard.ime.voice.PermissionTrampolineActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="false"
+            android:excludeFromRecents="true" />
+
+        <!-- What's New / Changelog Activity -->
+        <activity
+            android:name="com.voxboard.ime.update.WhatsNewActivity"
+            android:theme="@style/FlorisAppTheme"
+            android:exported="false" />
 
         <!-- Clipboard Media File Provider -->
         <provider

@@ -60,13 +60,12 @@ fun TypingScreen() = FlorisScreen {
     val navController = LocalNavController.current
 
     content {
-        // This card is temporary and is therefore not using a string resource (not so temporary as we thought...)
+        // Notice that suggestions are now working
         FlorisErrorCard(
             modifier = Modifier.padding(8.dp),
-            text = """
-                Suggestions (except system autofill) and spell checking are not available in this release. All
-                preferences in the "Corrections" group are properly implemented though.
-            """.trimIndent().replace('\n', ' '),
+            text = "Suggestions and autocorrect now use a built-in English dictionary. " +
+                "Enable VoxBoard as system spell checker for underlining: " +
+                "Android Settings -> Language & Input -> Spell checker.",
         )
 
         PreferenceGroup(title = stringRes(R.string.pref__suggestion__title)) {

@@ -1,0 +1,16 @@
+{
+  "name": "Dark Neon",
+  "author": "VoxBoard",
+  "version": 1,
+  "colors": {
+    "background": "#0D0D0D",
+    "keyBackground": "#1A1A2E",
+    "keyText": "#00FF41",
+    "keyPress": "#FF00FF",
+    "keyPopupBackground": "#16213E",
+    "candidateText": "#00FF41",
+    "functionKeyBackground": "#16213E",
+    "functionKeyText": "#FF00FF",
+    "swipeTrail": "#FF00FF"
+  }
+}

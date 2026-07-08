@@ -34,8 +34,11 @@ import com.voxboard.ime.editor.EditorInstance
 import com.voxboard.ime.keyboard.KeyboardManager
 import com.voxboard.ime.media.emoji.FlorisEmojiCompat
 import com.voxboard.ime.nlp.NlpManager
+import com.voxboard.ime.onehanded.OneHandedMode
 import com.voxboard.ime.text.gestures.GlideTypingManager
 import com.voxboard.ime.theme.ThemeManager
+import com.voxboard.ime.phrase.PhraseWatcher
+import com.voxboard.ime.update.UpdateNotifier
 import com.voxboard.lib.cache.CacheManager
 import com.voxboard.lib.crashutility.CrashUtility
 import com.voxboard.lib.devtools.Flog
@@ -78,6 +81,7 @@ class FlorisApplication : Application() {
     val nlpManager = lazy { NlpManager(this) }
     val subtypeManager = lazy { SubtypeManager(this) }
     val themeManager = lazy { ThemeManager(this) }
+    val phraseWatcher = lazy { PhraseWatcher(this) }
 
     override fun onCreate() {
         super.onCreate()
@@ -120,6 +124,8 @@ class FlorisApplication : Application() {
         extensionManager.value.init()
         clipboardManager.value.initializeForContext(this)
         DictionaryManager.init(this)
+        // Background update check — APK updates + feature packs
+        UpdateNotifier(this).checkAll()
     }
 
     private inner class BootComplete : BroadcastReceiver() {
@@ -167,3 +173,5 @@ fun Context.nlpManager() = this.florisApplication().nlpManager
 fun Context.subtypeManager() = this.florisApplication().subtypeManager
 
 fun Context.themeManager() = this.florisApplication().themeManager
+
+fun Context.phraseWatcher() = this.florisApplication().phraseWatcher

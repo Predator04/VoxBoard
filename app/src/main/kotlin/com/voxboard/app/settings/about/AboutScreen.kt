@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2025 The FlorisBoard Contributors
+ * Copyright (C) 2021-2025 The VoxBoard Contributors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.voxboard.app.settings.about
 
 import android.widget.Toast
@@ -25,11 +24,17 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.SystemUpdateAlt
 import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Policy
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -41,12 +46,25 @@ import com.voxboard.R
 import com.voxboard.app.LocalNavController
 import com.voxboard.app.Routes
 import com.voxboard.clipboardManager
+import com.voxboard.ime.update.UpdateChecker
+import com.voxboard.ime.update.UpdateInfo
 import com.voxboard.lib.compose.FlorisScreen
 import com.voxboard.lib.util.launchUrl
 import dev.patrickgold.jetpref.datastore.ui.Preference
+import kotlinx.coroutines.launch
 import org.voxboard.lib.android.stringRes
 import org.voxboard.lib.compose.FlorisCanvasIcon
 import org.voxboard.lib.compose.stringRes
+
+/** Tracks the state of the update check/install flow. */
+private enum class UpdateUiState {
+    Idle,
+    Checking,
+    Available,
+    Downloading,
+    UpToDate,
+    Error,
+}
 
 @Composable
 fun AboutScreen() = FlorisScreen {
@@ -55,6 +73,12 @@ fun AboutScreen() = FlorisScreen {
     val navController = LocalNavController.current
     val context = LocalContext.current
     val clipboardManager by context.clipboardManager()
+    val scope = rememberCoroutineScope()
+    val updateChecker = remember { UpdateChecker(context) }
+
+    var updateState by remember { mutableStateOf(UpdateUiState.Idle) }
+    var updateInfo by remember { mutableStateOf<UpdateInfo?>(null) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
 
     val appVersion = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
 
@@ -92,6 +116,70 @@ fun AboutScreen() = FlorisScreen {
                         context.stringRes(R.string.about__version_copied__error, "error_message" to e.message),
                         Toast.LENGTH_SHORT,
                     ).show()
+                }
+            },
+        )
+        // --- Update Checker ---
+        val updateSummary = when (updateState) {
+            UpdateUiState.Idle -> "Tap to check for updates"
+            UpdateUiState.Checking -> "Checking GitHub for updates..."
+            UpdateUiState.Available -> {
+                val info = updateInfo
+                if (info != null) "v${info.versionName} available (${info.publishedAt})"
+                else "Update available"
+            }
+            UpdateUiState.Downloading -> "Downloading update..."
+            UpdateUiState.UpToDate -> "VoxBoard is up to date! ✓"
+            UpdateUiState.Error -> errorMessage ?: "Check failed"
+        }
+        Preference(
+            icon = Icons.Default.SystemUpdateAlt,
+            title = "Updates",
+            summary = updateSummary,
+            enabledIf = {
+                when (updateState) {
+                    UpdateUiState.Idle, UpdateUiState.Available,
+                    UpdateUiState.UpToDate, UpdateUiState.Error -> true
+                    else -> false
+                }
+            },
+            onClick = {
+                when (updateState) {
+                    UpdateUiState.Idle, UpdateUiState.Error,
+                    UpdateUiState.UpToDate -> {
+                        updateState = UpdateUiState.Checking
+                        errorMessage = null
+                        scope.launch {
+                            try {
+                                val result = updateChecker.checkForUpdate()
+                                if (result != null) {
+                                    updateInfo = result
+                                    updateState = UpdateUiState.Available
+                                } else {
+                                    updateState = UpdateUiState.UpToDate
+                                }
+                            } catch (e: Exception) {
+                                errorMessage = e.message?.take(60) ?: "Network error"
+                                updateState = UpdateUiState.Error
+                            }
+                        }
+                    }
+                    UpdateUiState.Available -> {
+                        val info = updateInfo
+                        if (info != null) {
+                            updateState = UpdateUiState.Downloading
+                            scope.launch {
+                                try {
+                                    updateChecker.downloadAndInstall(info)
+                                    updateState = UpdateUiState.Idle
+                                } catch (e: Exception) {
+                                    errorMessage = e.message?.take(60) ?: "Download failed"
+                                    updateState = UpdateUiState.Error
+                                }
+                            }
+                        }
+                    }
+                    else -> { }
                 }
             },
         )

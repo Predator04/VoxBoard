@@ -24,6 +24,7 @@ import com.voxboard.ime.nlp.SpellingProvider
 import com.voxboard.ime.nlp.SpellingResult
 import com.voxboard.ime.nlp.SuggestionCandidate
 import com.voxboard.ime.nlp.SuggestionProvider
+import com.voxboard.ime.nlp.WordSuggestionCandidate
 import com.voxboard.lib.devtools.flogDebug
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -87,14 +88,26 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
         allowPossiblyOffensive: Boolean,
         isPrivateSession: Boolean,
     ): SpellingResult {
-        return when (word.lowercase()) {
-            // Use typo for typing errors
-            "typo" -> SpellingResult.typo(arrayOf("typo1", "typo2", "typo3"))
-            // Use grammar error if the algorithm can detect this. On Android 11 and lower grammar errors are visually
-            // marked as typos due to a lack of support
-            "gerror" -> SpellingResult.grammarError(arrayOf("grammar1", "grammar2", "grammar3"))
-            // Use valid word for valid input
-            else -> SpellingResult.validWord()
+        val lower = word.lowercase()
+        // Quick check: if word is empty or a single char, it's probably fine
+        if (lower.length <= 1) return SpellingResult.validWord()
+        // Check if word exists in our dictionary
+        val exists = wordData.withLock { it.containsKey(lower) }
+        if (exists) return SpellingResult.validWord()
+        // Find close suggestions via edit distance (Levenshtein)
+        val suggestions = wordData.withLock { data ->
+            data.entries
+                .filter { (w, _) -> w.length in (lower.length - 2)..(lower.length + 2) }
+                .map { (w, _) -> w to levenshteinDistance(lower, w) }
+                .filter { (_, dist) -> dist <= 2 || (dist <= 3 && lower.length > 5) }
+                .sortedBy { (_, dist) -> dist }
+                .take(maxSuggestionCount.coerceIn(1, 20))
+                .map { (w, _) -> w }
+        }
+        return if (suggestions.isEmpty()) {
+            SpellingResult.validWord()
+        } else {
+            SpellingResult.typo(suggestions.toTypedArray())
         }
     }
 
@@ -105,21 +118,85 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
         allowPossiblyOffensive: Boolean,
         isPrivateSession: Boolean,
     ): List<SuggestionCandidate> {
-        return emptyList()
-        /*val word = content.composingText.ifBlank { "next" }
-        val suggestions = buildList {
-            for (n in 0 until maxCandidateCount) {
-                add(WordSuggestionCandidate(
-                    text = "$word$n",
-                    secondaryText = if (n % 2 == 1) "secondary" else null,
-                    confidence = 0.5,
-                    isEligibleForAutoCommit = false,//n == 0 && word.startsWith("auto"),
-                    // We set ourselves as the source provider so we can get notify events for our candidate
-                    sourceProvider = this@LatinLanguageProvider,
-                ))
+        val currentWord = content.composingText.lowercase().trim()
+        if (currentWord.isBlank()) return emptyList()
+        val topCandidates = wordData.withLock { data ->
+            // Check if current word is an exact misspelling — find closest match
+            val exactExists = data.containsKey(currentWord)
+            if (!exactExists && currentWord.length >= 3) {
+                // The user typed something not in the dictionary.
+                // Find the closest edit-distance match as autocorrect candidate.
+                val closest = data.entries
+                    .filter { (w, _) -> w.length in (currentWord.length - 2)..(currentWord.length + 2) }
+                    .map { (w, freq) -> Triple(w, levenshteinDistance(currentWord, w), freq) }
+                    .filter { (_, dist, _) -> dist <= 2 }
+                    .sortedWith(compareBy<Triple<String, Int, Int>> { it.second }.thenByDescending { it.third })
+                    .firstOrNull()
+                if (closest != null) {
+                    val word = closest.first
+                    listOf(
+                        WordSuggestionCandidate(
+                            text = word,
+                            confidence = 0.95,
+                            isEligibleForAutoCommit = true,
+                            sourceProvider = this@LatinLanguageProvider,
+                        )
+                    )
+                } else {
+                    // Prefix completions as fallback
+                    data.entries
+                        .filter { (w, _) -> w.startsWith(currentWord) && w != currentWord }
+                        .sortedByDescending { (_, freq) -> freq }
+                        .take(maxCandidateCount.coerceIn(1, 10))
+                        .map { (word, freq) ->
+                            WordSuggestionCandidate(
+                                text = word,
+                                confidence = (freq / 255.0).coerceIn(0.0, 1.0),
+                                isEligibleForAutoCommit = currentWord.length >= 2,
+                                sourceProvider = this@LatinLanguageProvider,
+                            )
+                        }
+                }
+            } else {
+                // Word is in dictionary — show prefix completions
+                data.entries
+                    .filter { (w, _) -> w.startsWith(currentWord) && w != currentWord }
+                    .sortedByDescending { (_, freq) -> freq }
+                    .take(maxCandidateCount.coerceIn(1, 10))
+                    .map { (word, freq) ->
+                        WordSuggestionCandidate(
+                            text = word,
+                            confidence = (freq / 255.0).coerceIn(0.0, 1.0),
+                            isEligibleForAutoCommit = currentWord.length >= 2,
+                            sourceProvider = this@LatinLanguageProvider,
+                        )
+                    }
             }
         }
-        return suggestions*/
+        return topCandidates
+    }
+
+    /**
+     * Compute Levenshtein edit distance between two strings.
+     */
+    private fun levenshteinDistance(a: String, b: String): Int {
+        val dp = IntArray(b.length + 1) { it }
+        var prevDiag: Int
+        for (i in 1..a.length) {
+            dp[0] = i
+            prevDiag = i - 1
+            for (j in 1..b.length) {
+                val cost = if (a[i - 1] == b[j - 1]) 0 else 1
+                val old = dp[j]
+                dp[j] = minOf(
+                    dp[j] + 1,        // deletion
+                    dp[j - 1] + 1,    // insertion
+                    prevDiag + cost   // substitution
+                )
+                prevDiag = old
+            }
+        }
+        return dp[b.length]
     }
 
     override suspend fun notifySuggestionAccepted(subtype: Subtype, candidate: SuggestionCandidate) {

@@ -327,6 +327,14 @@ abstract class AbstractEditorInstance(context: Context) {
     }
 
     open fun commitChar(char: String): Boolean {
+        // Check quick phrases
+        val watcher = phraseWatcher
+        if (watcher != null && watcher.enabled && char.length == 1) {
+            val ic = currentInputConnection()
+            if (watcher.onCharCommitted(char, ic)) {
+                return true
+            }
+        }
         return commitChar(
             char = char,
             deletePreviousSpace = false,
@@ -385,6 +393,13 @@ abstract class AbstractEditorInstance(context: Context) {
     }
 
     open fun commitText(text: String): Boolean = commitTextInternal(text)
+
+    /**
+     * Hook for the quick phrase watcher. Called before each character is committed.
+     * Set by FlorisImeService during initialization.
+     */
+    @kotlin.jvm.JvmField
+    var phraseWatcher: com.voxboard.ime.phrase.PhraseWatcher? = null
 
     private fun commitTextInternal(text: String): Boolean {
         val ic = currentInputConnection() ?: return false

@@ -1,0 +1,12 @@
+{
+  "phrases": [
+    {"text": "I'll get back to you on that.", "category": "work"},
+    {"text": "Thanks for your help!", "category": "courtesy"},
+    {"text": "On my way!", "category": "casual"},
+    {"text": "Sounds good to me.", "category": "casual"},
+    {"text": "Can you send me the details?", "category": "work"},
+    {"text": "Let me check and confirm.", "category": "work"},
+    {"text": "Have a great day!", "category": "courtesy"},
+    {"text": "No problem at all.", "category": "courtesy"}
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "manifest_version": 1,
+  "app_version_code": 600,
+  "min_app_version_code": 509,
+  "features": [
+    {
+      "id": "theme-dark-neon",
+      "type": "theme",
+      "name": "Dark Neon Theme",
+      "version": 1,
+      "description": "A vibrant dark theme with neon accents",
+      "download_url": "https://github.com/Predator04/VoxBoard/releases/download/v0.6.0/theme-dark-neon.zip",
+      "size_bytes": 51200,
+      "checksum": "",
+      "apply_path": "themes/dark-neon.json",
+      "requires": []
+    },
+    {
+      "id": "dict-es",
+      "type": "dictionary",
+      "name": "Spanish Dictionary",
+      "version": 1,
+      "description": "Spanish spellcheck and word suggestions",
+      "download_url": "https://github.com/Predator04/VoxBoard/releases/download/v0.6.0/dict-es.zip",
+      "size_bytes": 512000,
+      "checksum": "",
+      "apply_path": "dictionaries/es.dict",
+      "requires": []
+    },
+    {
+      "id": "dict-fr",
+      "type": "dictionary",
+      "name": "French Dictionary",
+      "version": 1,
+      "description": "French spellcheck and word suggestions",
+      "download_url": "https://github.com/Predator04/VoxBoard/releases/download/v0.6.0/dict-fr.zip",
+      "size_bytes": 480000,
+      "checksum": "",
+      "apply_path": "dictionaries/fr.dict",
+      "requires": []
+    },
+    {
+      "id": "gesture-model-v2",
+      "type": "ml_model",
+      "name": "Gesture Typing Model v2",
+      "version": 1,
+      "description": "Improved swipe gesture recognition model",
+      "download_url": "https://github.com/Predator04/VoxBoard/releases/download/v0.6.0/gesture-model-v2.zip",
+      "size_bytes": 2048000,
+      "checksum": "",
+      "apply_path": "models/gesture_model.bin",
+      "requires": ["app_version >= 600"]
+    },
+    {
+      "id": "quick-phrases-en",
+      "type": "quick_phrases",
+      "name": "English Smart Phrases Pack",
+      "version": 1,
+      "description": "Curated quick phrases and templates for English",
+      "download_url": "https://github.com/Predator04/VoxBoard/releases/download/v0.6.0/quick-phrases-en.zip",
+      "size_bytes": 10240,
+      "checksum": "",
+      "apply_path": "phrases/en.json",
+      "requires": []
+    },
+    {
+      "id": "extension-emoji-v2",
+      "type": "extension",
+      "name": "Emoji Picker v2 Plugin",
+      "version": 1,
+      "description": "Enhanced emoji picker with search and categories",
+      "download_url": "https://github.com/Predator04/VoxBoard/releases/download/v0.6.0/emoji-plugin.voxboard",
+      "size_bytes": 256000,
+      "checksum": "",
+      "apply_path": "extensions/emoji-plugin.voxboard.zip",
+      "requires": []
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.6.0",
+      "title": "Self-Updating Engine",
+      "features": [
+        "Auto-download new themes, dictionaries, and ML models",
+        "One-tap APK updates with progress bar",
+        "What's New screen after each update",
+        "Extension auto-updates",
+        "Background feature sync every 24 hours"
+      ]
+    }
+  ]
+}

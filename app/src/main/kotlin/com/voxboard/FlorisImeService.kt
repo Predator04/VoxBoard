@@ -103,6 +103,7 @@ import com.voxboard.ime.theme.FlorisImeTheme
 import com.voxboard.ime.theme.FlorisImeUi
 import com.voxboard.ime.theme.WallpaperChangeReceiver
 import com.voxboard.ime.voice.VoiceInputHandler
+import com.voxboard.ime.phrase.PhraseWatcher
 import com.voxboard.lib.compose.SystemUiIme
 import com.voxboard.lib.devtools.LogTopic
 import com.voxboard.lib.devtools.flogError
@@ -243,6 +244,25 @@ class FlorisImeService : LifecycleInputMethodService() {
             showShortToastSync("Voice input stopped")
             return
         }
+        // Android 6+ requires runtime permission for RECORD_AUDIO.
+        // Since this is a Service (IME), we cannot use requestPermissions() directly.
+        // Launch an invisible trampoline activity that shows the system permission dialog.
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO)
+                != android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) {
+                val intent = Intent(this, com.voxboard.ime.voice.PermissionTrampolineActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
+                startActivity(intent)
+                return
+            }
+        }
+        // Also check if SpeechRecognizer is available on this device
+        if (!android.speech.SpeechRecognizer.isRecognitionAvailable(this)) {
+            showShortToastSync("Voice recognition not available on this device")
+            return
+        }
         voiceInputHandler.startListening(currentInputConnection, object : VoiceInputHandler.RecognitionCallback {
             override fun onVoiceResult(text: String) {
                 flogInfo { "Voice committed: $text" }
@@ -272,6 +292,9 @@ class FlorisImeService : LifecycleInputMethodService() {
     private val themeManager by themeManager()
 
     private val voiceInputHandler by lazy { VoiceInputHandler(this) }
+    private val phraseWatcher by lazy {
+        this.phraseWatcher().value
+    }
 
     private val activeState get() = keyboardManager.activeState
     private var inputWindowView by mutableStateOf<View?>(null)
@@ -292,6 +315,9 @@ class FlorisImeService : LifecycleInputMethodService() {
         super.onCreate()
         FlorisImeServiceReference = WeakReference(this)
         WindowCompat.setDecorFitsSystemWindows(window.window!!, false)
+        phraseWatcher.initialize()
+        phraseWatcher.enabled = prefs.quickPhrases.enabled.get()
+        editorInstance.phraseWatcher = phraseWatcher
         subtypeManager.activeSubtypeFlow.collectIn(lifecycleScope) { subtype ->
             val config = Configuration(resources.configuration)
             if (prefs.localization.displayKeyboardLabelsInSubtypeLanguage.get()) {
@@ -364,6 +390,7 @@ class FlorisImeService : LifecycleInputMethodService() {
         flogInfo { "restarting=$restarting info=${info?.debugSummarize()}" }
         super.onStartInput(info, restarting)
         if (info == null) return
+        phraseWatcher.reset()
         val editorInfo = FlorisEditorInfo.wrap(info)
         editorInstance.handleStartInput(editorInfo)
     }

@@ -338,6 +338,14 @@ abstract class FlorisPreferenceModel : PreferenceModel() {
         )
     }
 
+    val quickPhrases = QuickPhrases()
+    inner class QuickPhrases {
+        val enabled = boolean(
+            key = "quick_phrases__enabled",
+            default = true,
+        )
+    }
+
     val glide = Glide()
     inner class Glide {
         val enabled = boolean(
@@ -729,7 +737,7 @@ abstract class FlorisPreferenceModel : PreferenceModel() {
         )
         val enabled = boolean(
             key = "suggestion__enabled",
-            default = false,
+            default = true,
         )
         val displayMode = enum(
             key = "suggestion__display_mode",

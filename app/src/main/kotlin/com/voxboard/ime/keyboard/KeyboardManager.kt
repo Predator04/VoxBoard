@@ -539,12 +539,10 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
      * but skips handling changing to characters keyboard and double space periods.
      */
     fun handleHardwareKeyboardSpace() {
-        val candidate = nlpManager.getAutoCommitCandidate()
-        candidate?.let { commitCandidate(it) }
+        nlpManager.getAutoCommitCandidate() // populate suggestions, don't auto-commit
         // Skip handling changing to characters keyboard and double space periods
         // TODO: this is whether we commit space after selecting candidate. Should be determined by SuggestionProvider
-        if (!subtypeManager.activeSubtype.primaryLocale.supportsAutoSpace &&
-                candidate != null) { /* Do nothing */ } else {
+        if (!subtypeManager.activeSubtype.primaryLocale.supportsAutoSpace) { /* Do nothing */ } else {
             editorInstance.commitText(KeyCode.SPACE.toChar().toString())
         }
     }
@@ -554,8 +552,13 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
      * enabled by the user.
      */
     private fun handleSpace(data: KeyData) {
-        val candidate = nlpManager.getAutoCommitCandidate()
-        candidate?.let { commitCandidate(it) }
+        // 1. Try async candidate from suggestion pipeline (if available)
+        // Note: we show suggestions in the bar but do NOT auto-commit them.
+        // The user taps a suggestion to accept it — no surprises.
+        nlpManager.getAutoCommitCandidate()
+        if (prefs.suggestion.enabled.get()) {
+            nlpManager.synchronousAutocorrect() // populates suggestions only
+        }
         if (prefs.keyboard.spaceBarSwitchesToCharacters.get()) {
             when (activeState.keyboardMode) {
                 KeyboardMode.NUMERIC_ADVANCED,
@@ -577,8 +580,7 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
             }
         }
         // TODO: this is whether we commit space after selecting candidate. Should be determined by SuggestionProvider
-        if (!subtypeManager.activeSubtype.primaryLocale.supportsAutoSpace &&
-                candidate != null) { /* Do nothing */ } else {
+        if (!subtypeManager.activeSubtype.primaryLocale.supportsAutoSpace) { /* Do nothing */ } else {
             editorInstance.commitText(KeyCode.SPACE.toChar().toString())
         }
     }
@@ -808,7 +810,13 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
                         KeyType.CHARACTER, KeyType.NUMERIC ->{
                             val text = data.asString(isForDisplay = false)
                             if (!UCharacter.isUAlphabetic(UCharacter.codePointAt(text, 0))) {
-                                nlpManager.getAutoCommitCandidate()?.let { commitCandidate(it) }
+                                nlpManager.getAutoCommitCandidate() // populate suggestions, don't auto-commit
+                            }
+                            // Also trigger synchronous autocorrect for non-alpha chars (period, comma, etc.)
+                            if (!UCharacter.isUAlphabetic(UCharacter.codePointAt(text, 0)) &&
+                                prefs.suggestion.enabled.get()
+                            ) {
+                                nlpManager.synchronousAutocorrect() // populate suggestions only
                             }
                             editorInstance.commitChar(text)
                         }

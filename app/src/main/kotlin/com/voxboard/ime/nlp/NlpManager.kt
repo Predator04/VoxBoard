@@ -254,6 +254,65 @@ class NlpManager(context: Context) {
         return activeCandidates.firstOrNull { it.isEligibleForAutoCommit }
     }
 
+    /**
+     * Synchronous autocorrect lookup — runs on the current thread.
+     * Checks if the last word before cursor is in the dictionary, and
+     * if not, finds the closest edit-distance match.
+     * Returns null if the word is already correct or no good match found.
+     */
+    fun synchronousAutocorrect(): SuggestionCandidate? {
+        if (!prefs.suggestion.enabled.get()) return null
+        val content = editorInstance.activeContent
+        val currentWord = content.currentWordText.lowercase().trim()
+        if (currentWord.length < 3) return null
+        return runBlocking {
+            val provider = getSuggestionProvider(subtypeManager.activeSubtype)
+            // Check if word exists in dictionary
+            val words = provider.getListOfWords(subtypeManager.activeSubtype)
+            if (words.contains(currentWord)) return@runBlocking null // Already correct
+            // Find closest match by Levenshtein distance
+            val closest = words
+                .filter { it.length in (currentWord.length - 2)..(currentWord.length + 2) }
+                .map { w -> w to levenshteinDistance(currentWord, w) }
+                .filter { (_, dist) -> dist <= 2 || (dist <= 3 && currentWord.length > 5) }
+                .sortedBy { (_, dist) -> dist }
+                .firstOrNull()
+            if (closest != null) {
+                val freq = provider.getFrequencyForWord(subtypeManager.activeSubtype, closest.first)
+                WordSuggestionCandidate(
+                    text = closest.first,
+                    confidence = (freq * 0.9 + 0.1).coerceIn(0.0, 1.0),
+                    isEligibleForAutoCommit = true,
+                )
+            } else {
+                null
+            }
+        }
+    }
+
+    /**
+     * Compute Levenshtein edit distance.
+     */
+    private fun levenshteinDistance(a: String, b: String): Int {
+        val dp = IntArray(b.length + 1) { it }
+        var prevDiag: Int
+        for (i in 1..a.length) {
+            dp[0] = i
+            prevDiag = i - 1
+            for (j in 1..b.length) {
+                val cost = if (a[i - 1] == b[j - 1]) 0 else 1
+                val old = dp[j]
+                dp[j] = minOf(
+                    dp[j] + 1,
+                    dp[j - 1] + 1,
+                    prevDiag + cost
+                )
+                prevDiag = old
+            }
+        }
+        return dp[b.length]
+    }
+
     fun removeSuggestion(subtype: Subtype, candidate: SuggestionCandidate): Boolean {
         return runBlocking { candidate.sourceProvider?.removeSuggestion(subtype, candidate) == true }.also { result ->
             if (result) {
